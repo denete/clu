@@ -118,7 +118,7 @@ sub on_public {
   if (($type eq "msg") || ($arg =~ /^\s*$mynick/i)) {
     $arg =~ s/^\s*$mynick\s*[,:]?\s*//;
     if ($arg =~ /^help/) {
-      $msg .= sprintf("Usage: $mynick <%s>", join('|', keys(%dataset)));
+      $msg .= &get_help;
     }
     elsif ($arg =~ m/^(\S*)\s?(\S*)?/){
         $msg .= &get_api($1, $2);
@@ -149,14 +149,21 @@ sub get_api{
           foreach my $entry (@{$apidata{ $lib }->{apidata}->{api}}){
               $result .= "$entry->{name} -- $entry->{def} [$entry->{url}]\n" if $entry->{name} =~ m/$keyword/i;
           }
+          $result = "I've got nothing for $lib $keyword." if (!$result);
       } elsif ((defined $lib) && ($lib ne '')) {
           my $randomNode = @{$apidata{ $lib }->{apidata}->{api}}[rand @{$apidata{ $lib }->{apidata}->{api}}];
           $result .= "$randomNode->{name} -- $randomNode->{def}";
           $result .=  "[$randomNode->{url}]" if $randomNode->{url} ne '';
+          $result = "I've got nothing for $lib." if (!$result); # we should never see this
       }
+  } else {
+      $result = &get_help;
   }
-  $result = "I've got nothing." if (!$result);
   return $result;
+}
+
+sub get_help{
+    return sprintf("Usage: $mynick <%s> <optional keyword>", join('|', keys(%dataset)));
 }
 
 sub init_api {
