@@ -1,0 +1,17 @@
+{   "apidata": {
+        "lang": "Fortran",
+        "library": "libGoose",
+        "version": "1.0.0",
+        "api": [
+        {
+            "name": "pluck",
+            "def": "Remove the feathers from the object.",
+            "url": "http://blah.blah.com/pluck/"
+        },
+        {
+            "name": "cat",
+            "def": "Add CATS to the world.",
+            "url": "http://blah.blah.com/cats/"
+        }]
+    }
+}
