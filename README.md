@@ -1,4 +1,4 @@
-Text-constrain plugin for jQuery
+Clu-bot
 ===========================
 
 A bot when you need a clue.
