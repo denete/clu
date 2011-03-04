@@ -1,3 +1,5 @@
 config.pl
 test.pl
 data/jquery/*.html
+data/*.json
+!data/unix.json

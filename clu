@@ -1,7 +1,19 @@
 #!/usr/bin/perl -s
 
+# config.pl should include:
+#$config::dataset =
+#  (
+#   'library_keyword1' => 'data/library_datafile1',
+#   'library_keyword2' => 'data/library_datafile2',
+#  );
+#$config::server = 'server_address';
+#$config::pw = 'password_string';
+#1;
+
+# ---
+
 use strict;
-use vars qw($channel $mynick $irc $conn $trans %apidata %dataset);
+use vars qw($channel $mynick $irc $conn $trans %apidata);
 use Net::IRC;
 use Text::Wrap qw(fill $columns);
 use JSON::XS;
@@ -11,15 +23,7 @@ require "config.pl";
 
 $columns = 450;
 
-# Configure installation with the keyword for the library as a key to the data file location
-my %dataset =
-  (
-   'jquery' => 'data/jQuery.1.5.0.json',
-   'libgoose' => 'data/libGoose.1.0.0.json',
-   'unix' => 'data/unix.json',
-  );
-
-while ( my ($key, $value) = each(%dataset) ) {
+while ( my ($key, $value) = each(%config::dataset) ) {
     &init_api($key, $value);
 }
   
@@ -120,11 +124,11 @@ sub on_public {
     if ($arg =~ /^help/) {
       $msg .= &get_help;
     }
-    elsif ($arg =~ m/^(\S*)\s?(\S*)?/){
+    elsif ($arg =~ m/^(\w+)\s?(\w+)?/){
         $msg .= &get_api($1, $2);
     }
     else {
-        $msg .= sprintf("Usage: $mynick <%s>", join('|', keys(%dataset)));
+        $msg .= &get_help;
     }
     &fill_output($self, $msg, $to) unless $msg eq "$nick, ";
   }
@@ -157,13 +161,13 @@ sub get_api{
           $result = "I've got nothing for $lib." if (!$result); # we should never see this
       }
   } else {
-      $result = &get_help;
+      #$result = &get_help;
   }
   return $result;
 }
 
 sub get_help{
-    return sprintf("Usage: $mynick <%s> <optional keyword>", join('|', keys(%dataset)));
+    return sprintf("Usage: $mynick <%s> <optional keyword>", join('|', keys(%config::dataset)));
 }
 
 sub init_api {
