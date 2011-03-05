@@ -7,7 +7,9 @@
 #   'library_keyword2' => 'data/library_datafile2',
 #  );
 #$config::server = 'server_address';
+#$config::port = 0000;
 #$config::pw = 'password_string';
+#$config::ssl = 0;
 #1;
 
 # ---
@@ -26,20 +28,20 @@ $columns = 450;
 while ( my ($key, $value) = each(%config::dataset) ) {
     &init_api($key, $value);
 }
-  
+
 $channel = $ARGV[0] ? "#$ARGV[0]" : '#bots';
-$mynick = $ARGV[1];
+$mynick = $ARGV[1] ? $ARGV[1] : 'clu';
 print "channel: $channel\n";
 $irc = new Net::IRC;
-$mynick = 'clu' if (!$mynick);
 $conn = $irc->newconn(
-  Nick => "$mynick",
-  Server => $config::server,
-  Port => 6667,
-  Ircname => 'CLU-Bot',
-  Username => "$mynick",
-  Password => $config::pw,
-  );
+    Nick => "$mynick",
+    Server => $config::server,
+    Port => $config::port,
+    Ircname => 'CLU-Bot',
+    Username => "$mynick",
+    Password => $config::pw,
+    SSL => $config::ssl,
+);
 
 $conn->add_handler(['376', '422'], \&on_connect);
 $conn->add_global_handler('disconnect', \&on_disconnect);
@@ -53,117 +55,122 @@ $conn->add_global_handler(353, \&on_names);
 $irc->start;
 
 sub on_connect {
-  my $self = shift;
+    my $self = shift;
 
-  print "Attempting to join $channel\n";
-  eval { $self->join("$channel"); };
-  if ($@) {
-    print "$@";
-  }
+    print "Attempting to join $channel\n";
+    eval { $self->join("$channel"); };
+    if ($@) {
+        print "$@";
+    }
 
-  srand($$);
+    srand($$);
 }
 
 # Reconnect to the server when we die.
 sub on_disconnect {
-  my ($self, $event) = @_;
+    my ($self, $event) = @_;
 
-  print "Disconnected from ". $event->from(), " (".
-    ($event->args())[0]. "). Attempting to reconnect...\n";
-  $self->connect();
+    print "Disconnected from ". $event->from(), " (".
+        ($event->args())[0]. "). Attempting to reconnect...\n";
+    $self->connect();
 }
 
 sub on_join {
-  my ($self, $event) = @_;
-  my ($channel) = ($event->to)[0];
+    my ($self, $event) = @_;
+    my ($channel) = ($event->to)[0];
 
-  printf "*** %s (%s) has joined channel %s\n",
-  $event->nick, $event->userhost, $channel;
+    printf "*** %s (%s) has joined channel %s\n",
+        $event->nick, $event->userhost, $channel;
 
-  if ($event->userhost =~ m/$trans->{userhost}/i) {
-    push @{$trans->{master}}, $event->nick;
-  }
+    if ($event->userhost =~ m/$trans->{userhost}/i) {
+        push @{$trans->{master}}, $event->nick;
+    }
 }
 
 sub on_names {
-  my ($self, $event) = @_;
-  my (@list) = $event->args ();
+    my ($self, $event) = @_;
+    my (@list) = $event->args ();
 
-  print "names: @list\n";
+    print "names: @list\n";
 }
 
 sub on_nick {
-  my ($self, $event) = @_;
-  my ($channel) = ($event->to)[0];
+    my ($self, $event) = @_;
+    my ($channel) = ($event->to)[0];
 
-  print Dumper($event);
-  if ($event->userhost =~ m/$trans->{userhost}/i) {
-    my ($newnick, $oldnick) = (($event->args())[0], $event->nick);
-    my @nicks = grep { !/$oldnick/ } @{$trans->{master}};
-    push @nicks, $newnick;
-    $trans->{master} = \@nicks;
-  }
+    print Dumper($event);
+    if ($event->userhost =~ m/$trans->{userhost}/i) {
+        my ($newnick, $oldnick) = (($event->args())[0], $event->nick);
+        my @nicks = grep { !/$oldnick/ } @{$trans->{master}};
+        push @nicks, $newnick;
+        $trans->{master} = \@nicks;
+    }
 }
 
 sub on_ping {
-  my ($self, $event) = @_;
+    my ($self, $event) = @_;
 }
 
 sub on_public {
-  my ($self, $event) = @_;
-  my ($nick, $userhost, $arg, $type) = ($event->nick, $event->userhost, $event->args, $event->type);
-  my $msg = "$nick, ";
-  my $channel = ($event->to)[0];
-  my $to = $type eq 'msg' ? $nick : $channel;
-  if ($type eq "msg") {
-    print sprintf(qq(%s /msg'd me: %s), $event->nick, Dumper($event->args));
-  }
+    my ($self, $event) = @_;
+    my ($nick, $userhost, $arg, $type) = ($event->nick, $event->userhost, $event->args, $event->type);
+    my $msg = "$nick, ";
+    my $channel = ($event->to)[0];
+    my $to = $type eq 'msg' ? $nick : $channel;
+    if ($type eq "msg") {
+        print sprintf(qq(%s /msg'd me: %s), $event->nick, Dumper($event->args));
+    }
 
-  if (($type eq "msg") || ($arg =~ /^\s*$mynick/i)) {
-    $arg =~ s/^\s*$mynick\s*[,:]?\s*//;
-    if ($arg =~ /^help/) {
-      $msg .= &get_help;
+    if (($type eq "msg") || ($arg =~ /^\s*$mynick/i)) {
+        $arg =~ s/^\s*$mynick\s*[,:]?\s*//;
+        if ($arg =~ /^help/) {
+            $msg .= &get_help;
+        } elsif ($arg =~ m/^(\w+)\s?(\w+)?/){
+            $msg .= &get_api($1, $2);
+        } else {
+            $msg .= &get_help;
+        }
+        &fill_output($self, $msg, $to) unless $msg eq "$nick, ";
     }
-    elsif ($arg =~ m/^(\w+)\s?(\w+)?/){
-        $msg .= &get_api($1, $2);
-    }
-    else {
-        $msg .= &get_help;
-    }
-    &fill_output($self, $msg, $to) unless $msg eq "$nick, ";
-  }
 }
 
 sub fill_output {
-  my ($self, $msg, $to) = @_;
-  
-  # don't kill newlines
-  my @result = split(/\n/, $msg);
-  for my $line (@result) {
-    $self->privmsg($to, $line);
-    #sleep 1;
-  }
+    my ($self, $msg, $to) = @_;
+
+    # don't kill newlines
+    my @result = split(/\n/, $msg);
+    for my $line (@result) {
+        $self->privmsg($to, $line);
+        #sleep 1;
+    }
 }
 
 sub get_api{
-  my ($lib, $keyword) = @_;
-  my ($result);
-  if (exists $apidata{ $lib }){
-      if ((defined $keyword) && ($keyword ne '') && (defined $lib) && ($lib ne '')){
-          foreach my $entry (@{$apidata{ $lib }->{apidata}->{api}}){
-              $result .= "$entry->{name} -- $entry->{def} [$entry->{url}]\n" if $entry->{name} =~ m/$keyword/i;
-          }
-          $result = "I've got nothing for $lib $keyword." if (!$result);
-      } elsif ((defined $lib) && ($lib ne '')) {
-          my $randomNode = @{$apidata{ $lib }->{apidata}->{api}}[rand @{$apidata{ $lib }->{apidata}->{api}}];
-          $result .= "$randomNode->{name} -- $randomNode->{def}";
-          $result .=  "[$randomNode->{url}]" if $randomNode->{url} ne '';
-          $result = "I've got nothing for $lib." if (!$result); # we should never see this
-      }
-  } else {
-      #$result = &get_help;
-  }
-  return $result;
+    my ($lib, $keyword) = @_;
+    my ($result);
+    my (@name_array);
+    if (exists $apidata{ $lib }){
+        if ((defined $keyword) && ($keyword ne '') && (defined $lib) && ($lib ne '')){
+            if ($keyword eq '_showall'){
+                foreach my $entry (@{$apidata{ $lib }->{apidata}->{api}}){
+                    $result .= "$entry->{name}, ";
+                }
+            } else {
+                foreach my $entry (@{$apidata{ $lib }->{apidata}->{api}}){
+                    $result .= "$entry->{name} -- $entry->{def} [$entry->{url}]\n" if $entry->{name} =~ m/$keyword/i;
+                }
+            }
+            $result = "I've got nothing for $lib $keyword." if (!$result);
+        } elsif ((defined $lib) && ($lib ne '')) {
+                my $randomNode = @{$apidata{ $lib }->{apidata}->{api}}[rand @{$apidata{ $lib }->{apidata}->{api}}];
+                $result .= "$randomNode->{name} -- $randomNode->{def}";
+                $result .=  "[$randomNode->{url}]" if $randomNode->{url} ne '';
+                $result = "I've got nothing for $lib." if (!$result); # we should never see this
+        }
+    } else {
+        #$result = &get_help;
+    }
+    return $result;
 }
 
 sub get_help{
