@@ -6,16 +6,19 @@
 #   'library_keyword1' => 'data/library_datafile1',
 #   'library_keyword2' => 'data/library_datafile2',
 #  );
+#$config::nick = 'nick_string';
+#$config::name = 'name_string';
 #$config::server = 'server_address';
 #$config::port = 0000;
 #$config::pw = 'password_string';
 #$config::ssl = 0;
+#$config::ch = 'channel_name'; #no hash required
 #1;
 
 # ---
 
 use strict;
-use vars qw($channel $mynick $irc $conn $trans %apidata);
+use vars qw($channel $mynick $irc $conn %apidata);
 use Net::IRC;
 use Text::Wrap qw(fill $columns);
 use JSON::XS;
@@ -29,16 +32,18 @@ while ( my ($key, $value) = each(%config::dataset) ) {
     &init_api($key, $value);
 }
 
-$channel = $ARGV[0] ? "#$ARGV[0]" : '#bots';
-$mynick = $ARGV[1] ? $ARGV[1] : 'clu';
+$channel = $ARGV[0] ? "#$ARGV[0]" : "#$config::ch";
+$mynick = $ARGV[1] ? $ARGV[1] : $config::nick;
+print "server: $config::server:$config::port\n";
 print "channel: $channel\n";
+print "nick: $mynick\n\n";
 $irc = new Net::IRC;
 $conn = $irc->newconn(
-    Nick => "$mynick",
+    Nick => $mynick,
     Server => $config::server,
     Port => $config::port,
-    Ircname => 'CLU-Bot',
-    Username => "$mynick",
+    Ircname => $config::name,
+    Username => $mynick,
     Password => $config::pw,
     SSL => $config::ssl,
 );
@@ -66,7 +71,6 @@ sub on_connect {
     srand($$);
 }
 
-# Reconnect to the server when we die.
 sub on_disconnect {
     my ($self, $event) = @_;
 
@@ -81,10 +85,6 @@ sub on_join {
 
     printf "*** %s (%s) has joined channel %s\n",
         $event->nick, $event->userhost, $channel;
-
-    if ($event->userhost =~ m/$trans->{userhost}/i) {
-        push @{$trans->{master}}, $event->nick;
-    }
 }
 
 sub on_names {
@@ -99,12 +99,6 @@ sub on_nick {
     my ($channel) = ($event->to)[0];
 
     print Dumper($event);
-    if ($event->userhost =~ m/$trans->{userhost}/i) {
-        my ($newnick, $oldnick) = (($event->args())[0], $event->nick);
-        my @nicks = grep { !/$oldnick/ } @{$trans->{master}};
-        push @nicks, $newnick;
-        $trans->{master} = \@nicks;
-    }
 }
 
 sub on_ping {
