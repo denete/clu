@@ -109,10 +109,10 @@ sub get_response {
         $msg .= &get_entries($1, $2);
         if($msg =~ m/\n/){
             my @msgLines = split('\n', $msg);
-            $msg .= @msgLines . " entries returned.";
-            $irc->yield( privmsg => $route => "$msg" );
-            for my $line (@msgLines){
-                $irc->yield( privmsg => $route => "$line" );
+            my $numEntries = @msgLines;
+            my $count = $numEntries > $config::max_results ? $config::max_results : $numEntries;
+            for(my $i = 0; $i < $count; $i++){
+                $irc->yield( privmsg => $route => "$msgLines[$i]" );
             }
         } else {
             my @result = split(/\n/, fill('', '', $msg));
