@@ -69,21 +69,14 @@ sub _start {
 
 sub irc_001 {
     my $sender = $_[SENDER];
-
-    # Since this is an irc_* event, we can get the component's object by
-    # accessing the heap of the sender. Then we register and connect to the
-    # specified server.
     my $irc = $sender->get_heap();
-
     print "Connected to ", $irc->server_name(), "\n";
 
-    # we join our channels
     print "Attempting to join: " . join(' ', @channels, "\n");
     $irc->yield( join => $_ ) for @channels;
     return;
 }
 
-# the good old slap
 sub irc_botcmd_slap {
     my $nick = (split /!/, $_[ARG0])[0];
     my ($where, $arg) = @_[ARG1, ARG2];
@@ -97,16 +90,16 @@ sub irc_public {
 
 sub irc_msg {
     my $nick = ( split /!/, $_[ARG0] )[0];
-    &get_reference($nick, $nick, $_[ARG2]);
+    &get_response($nick, $nick, $_[ARG2]);
 }
 
 sub irc_bot_addressed {
     my $nick = ( split /!/, $_[ARG0] )[0];
     my $channel = $_[ARG1]->[0];
-    &get_reference($nick, $channel, $_[ARG2]);
+    &get_response($nick, $channel, $_[ARG2]);
 }
 
-sub get_reference {
+sub get_response {
     my($nick, $route, $what) = @_;
     my $msg = "$nick: ";
     if ($what =~ m/^help/i){
@@ -122,7 +115,6 @@ sub get_reference {
                 $irc->yield( privmsg => $route => "$line" );
             }
         } else {
-            # split down any long msg, and send in multiple privmsgs
             my @result = split(/\n/, fill('', '', $msg));
             for my $line (@result) {
                 $irc->yield( privmsg => $route => "$line" );
