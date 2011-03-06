@@ -1,8 +1,8 @@
-{   "apidata": {
+{   "data": {
         "lang": "",
         "library": "unix",
         "version": "",
-        "api": [
+        "entries": [
         {
             "name": "cd",
             "def": "Change the current working directory.",

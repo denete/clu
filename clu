@@ -19,7 +19,7 @@
 # ---
 
 use strict;
-use vars qw($channel $mynick $irc $conn %apidata @channels @datakeys %cmds);
+use vars qw($channel $mynick $irc $conn %data @channels @datakeys %cmds);
 use Text::Wrap qw(fill $columns);
 use JSON::XS;
 use Data::Dumper;
@@ -35,7 +35,7 @@ $columns = $config::msg_length;
 $mynick = $ARGV[1] ? $ARGV[1] : $config::nick;
 
 while ( my ($key, $value) = each(%config::dataset) ) {
-    &init_api($key, $value);
+    &init_data($key, $value);
 }
 
 my $irc = POE::Component::IRC->spawn(
@@ -113,7 +113,7 @@ sub get_reference {
         $msg .= &get_help;
         $irc->yield( privmsg => $route => "$msg" );
     } elsif ($what =~ m/^(\w+)\s?(\w+)?/){
-        $msg .= &get_api($1, $2);
+        $msg .= &get_entries($1, $2);
         if($msg =~ m/\n/){
             my @msgLines = split('\n', $msg);
             $msg .= @msgLines . " entries returned.";
@@ -133,24 +133,24 @@ sub get_reference {
     return;
 }
 
-sub get_api {
+sub get_entries {
     my ($lib, $keyword) = @_;
     my ($result);
     my (@name_array);
-    if (exists $apidata{ $lib }){
+    if (exists $data{ $lib }){
         if ((defined $keyword) && ($keyword ne '') && (defined $lib) && ($lib ne '')){
             if ($keyword eq '_showall'){
-                for my $entry (@{$apidata{ $lib }->{apidata}->{api}}){
+                for my $entry (@{$data{ $lib }->{data}->{entries}}){
                     $result .= "$entry->{name}, ";
                 }
             } else {
-                for my $entry (@{$apidata{ $lib }->{apidata}->{api}}){
+                for my $entry (@{$data{ $lib }->{data}->{entries}}){
                     $result .= "$entry->{name} -- $entry->{def} [$entry->{url}]\n" if $entry->{name} =~ m/$keyword/i;
                 }
             }
             $result = "I've got nothing for $lib $keyword." if (!$result);
         } elsif ((defined $lib) && ($lib ne '')) {
-                my $randomNode = @{$apidata{ $lib }->{apidata}->{api}}[rand @{$apidata{ $lib }->{apidata}->{api}}];
+                my $randomNode = @{$data{ $lib }->{data}->{entries}}[rand @{$data{ $lib }->{data}->{entries}}];
                 $result .= "$randomNode->{name} -- $randomNode->{def}";
                 $result .=  "[$randomNode->{url}]" if $randomNode->{url} ne '';
                 $result = "I've got nothing for $lib." if (!$result); # we should never see this
@@ -161,12 +161,12 @@ sub get_api {
     return $result;
 }
 
-sub init_api {
-    my ($myAPIkey, $myAPIvalue) = @_;
-    open(FILE,"<$myAPIvalue") || warn "Can't open $myAPIvalue: $!";
+sub init_data {
+    my ($myDatakey, $myDatavalue) = @_;
+    open(FILE,"<$myDatavalue") || warn "Can't open $myDatavalue: $!";
     my $jsontext = do { local $/; <FILE>; };
     close(FILE);
-    $apidata{ $myAPIkey } = decode_json($jsontext);
+    $data{ $myDatakey } = decode_json($jsontext);
 }
 
 # We registered for all events, this will produce some debug info.

@@ -1,8 +1,8 @@
-{   "apidata": {
+{   "data": {
         "lang": "JavaScript",
         "library": "jQuery",
         "version": "1.5.0",
-        "api": [
+        "entries": [
         { 
             "name": ".jquery", 
             "def": "A string containing the jQuery version number.", 

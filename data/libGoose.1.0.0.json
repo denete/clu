@@ -1,8 +1,8 @@
-{   "apidata": {
+{   "data": {
         "lang": "Fortran",
         "library": "libGoose",
         "version": "1.0.0",
-        "api": [
+        "entries": [
         {
             "name": "pluck",
             "def": "Remove the feathers from the object.",
