@@ -12,131 +12,147 @@
 #$config::port = 0000;
 #$config::pw = 'password_string';
 #$config::ssl = 0;
-#$config::ch = 'channel_name'; #no hash required
+#@config::ch = ('channel_name1', 'channel_name2');
+#$config::msg_length = 450;
 #1;
 
 # ---
 
 use strict;
-use vars qw($channel $mynick $irc $conn %apidata);
-use Net::IRC;
+use vars qw($channel $mynick $irc $conn %apidata @channels @datakeys %cmds);
 use Text::Wrap qw(fill $columns);
 use JSON::XS;
 use Data::Dumper;
 
-require "config.pl";
+use POE;
+use POE::Component::IRC;
+use POE::Component::IRC::Plugin::AutoJoin;
+use POE::Component::IRC::Plugin::BotAddressed;
+#use POE::Component::IRC::Plugin::BotCommand;
 
+require "config.pl";
 $columns = 450;
 
+@channels = $ARGV[0] ? ("#$ARGV[0]") : @config::ch;
+$mynick = $ARGV[1] ? $ARGV[1] : $config::nick;
+print "Configuration --\nserver: $config::server:$config::port\n";
+print "channel(s): " . join(', ', @channels) . "\n";
+print "nick: $mynick\n";
+
+
 while ( my ($key, $value) = each(%config::dataset) ) {
+    #$cmds{ $key } = "$mynick $key <optional keyword>";
     &init_api($key, $value);
 }
 
-$channel = $ARGV[0] ? "#$ARGV[0]" : "#$config::ch";
-$mynick = $ARGV[1] ? $ARGV[1] : $config::nick;
-print "server: $config::server:$config::port\n";
-print "channel: $channel\n";
-print "nick: $mynick\n\n";
-$irc = new Net::IRC;
-$conn = $irc->newconn(
-    Nick => $mynick,
-    Server => $config::server,
+my $irc = POE::Component::IRC->spawn(
+    nick   => $mynick,
+    server => $config::server,
     Port => $config::port,
     Ircname => $config::name,
     Username => $mynick,
     Password => $config::pw,
-    SSL => $config::ssl,
+    UseSSL => $config::ssl,
+    msg_length => $config::msg_length+50,
 );
 
-$conn->add_handler(['376', '422'], \&on_connect);
-$conn->add_global_handler('disconnect', \&on_disconnect);
-$conn->add_handler('public', \&on_public);
-$conn->add_handler('msg', \&on_public);
-$conn->add_handler('join', \&on_join);
-$conn->add_handler('nick', \&on_nick);
-$conn->add_handler('ping', \&on_ping, 2);
-$conn->add_global_handler(353, \&on_names);
+POE::Session->create(
+    package_states => [
+        main => [ qw(_default _start irc_botcmd_slap irc_public irc_bot_addressed irc_connected irc_disconnect irc_join irc_nick irc_msg) ]
+    ],
+    heap => { irc => $irc },
+);
 
-$irc->start;
+$poe_kernel->run();
 
-sub on_connect {
-    my $self = shift;
+sub _start {
+    my $heap = $_[HEAP];
+    my $irc = $heap->{irc};
 
-    print "Attempting to join $channel\n";
-    eval { $self->join("$channel"); };
-    if ($@) {
-        print "$@";
-    }
-
-    srand($$);
+    #$irc->plugin_add('BotCommand', POE::Component::IRC::Plugin::BotCommand->new(
+    #    Commands => {
+    #        slap   => 'Takes one argument: a nickname to slap.',
+    #        %cmds
+    #    },
+    #    Ignore_unknown => 1,
+    #    #Method => 'privmsg',
+    #));
+    $irc->plugin_add( 'BotAddressed', POE::Component::IRC::Plugin::BotAddressed->new() );
+    $irc->plugin_add( 'AutoJoin', POE::Component::IRC::Plugin::AutoJoin->new(Channels => \@channels) );
+    $irc->yield(register => 'all');
+    $irc->yield(connect => { });
 }
 
-sub on_disconnect {
-    my ($self, $event) = @_;
-
-    print "Disconnected from ". $event->from(), " (".
-        ($event->args())[0]. "). Attempting to reconnect...\n";
-    $self->connect();
+# the good old slap
+sub irc_botcmd_slap {
+    my $nick = (split /!/, $_[ARG0])[0];
+    my ($where, $arg) = @_[ARG1, ARG2];
+    $irc->yield(ctcp => $where, "ACTION slaps $arg");
+    return;
 }
 
-sub on_join {
-    my ($self, $event) = @_;
-    my ($channel) = ($event->to)[0];
-
-    printf "*** %s (%s) has joined channel %s\n",
-        $event->nick, $event->userhost, $channel;
+sub irc_public {
+    return;
 }
 
-sub on_names {
-    my ($self, $event) = @_;
-    my (@list) = $event->args ();
-
-    print "names: @list\n";
+sub irc_msg {
+    my $nick = ( split /!/, $_[ARG0] )[0];
+    &get_reference($nick, $nick, $_[ARG2]);
 }
 
-sub on_nick {
-    my ($self, $event) = @_;
-    my ($channel) = ($event->to)[0];
-
-    print Dumper($event);
+sub irc_bot_addressed {
+    #my ($kernel, $heap) = @_[KERNEL, HEAP];
+    #my $what = $_[ARG2];
+    #return if $what =~ m/^help/i;
+    #return if $what =~ m/^slap/i;
+    my $nick = ( split /!/, $_[ARG0] )[0];
+    my $channel = $_[ARG1]->[0];
+    &get_reference($nick, $channel, $_[ARG2]);
+    
+    
+    #my $msg = "$nick: ";
+    #if ($what =~ m/^(\w+)\s?(\w+)?/){
+    #    $msg .= &get_api($1, $2);
+    #    if($msg =~ m/\n/){
+    #        my @msgLines = split('\n', $msg);
+    #        foreach my $line (@msgLines){
+    #            $msg .= $line;
+    #            $irc->yield( privmsg => $channel => "$msg" );
+    #            $msg = '';
+    #        }
+    #    } else {
+    #        $irc->yield( privmsg => $channel => "$msg" );
+    #    }
+    #}
+    #return;
 }
 
-sub on_ping {
-    my ($self, $event) = @_;
-}
-
-sub on_public {
-    my ($self, $event) = @_;
-    my ($nick, $userhost, $arg, $type) = ($event->nick, $event->userhost, $event->args, $event->type);
-    my $msg = "$nick, ";
-    my $channel = ($event->to)[0];
-    my $to = $type eq 'msg' ? $nick : $channel;
-    if ($type eq "msg") {
-        print sprintf(qq(%s /msg'd me: %s), $event->nick, Dumper($event->args));
-    }
-
-    if (($type eq "msg") || ($arg =~ /^\s*$mynick/i)) {
-        $arg =~ s/^\s*$mynick\s*[,:]?\s*//;
-        if ($arg =~ /^help/) {
-            $msg .= &get_help;
-        } elsif ($arg =~ m/^(\w+)\s?(\w+)?/){
-            $msg .= &get_api($1, $2);
+sub get_reference {
+    my($nick, $route, $what) = @_;
+    #my $what = $_[ARG2];
+    #return if $what =~ m/^help/i;
+    #return if $what =~ m/^slap/i;
+    #my $nick = ( split /!/, $nick )[0];
+    #my $channel = $route;
+    my $msg = "$nick: ";
+    if ($what =~ m/^help/i){
+        $msg .= &get_help;
+        $irc->yield( privmsg => $route => "$msg" );
+    } elsif ($what =~ m/^(\w+)\s?(\w+)?/){
+        $msg .= &get_api($1, $2);
+        if($msg =~ m/\n/){
+            my @msgLines = split('\n', $msg);
+            foreach my $line (@msgLines){
+                $msg .= $line;
+                $irc->yield( privmsg => $route => "$msg" );
+                $msg = '';
+            }
         } else {
-            $msg .= &get_help;
+            # split down the long msg, and send in multiple privmsgs
+            $irc->yield( privmsg => $route => "$msg" );
         }
-        &fill_output($self, $msg, $to) unless $msg eq "$nick, ";
     }
-}
-
-sub fill_output {
-    my ($self, $msg, $to) = @_;
-
-    # don't kill newlines
-    my @result = split(/\n/, $msg);
-    for my $line (@result) {
-        $self->privmsg($to, $line);
-        #sleep 1;
-    }
+    return;
 }
 
 sub get_api{
@@ -162,13 +178,9 @@ sub get_api{
                 $result = "I've got nothing for $lib." if (!$result); # we should never see this
         }
     } else {
-        #$result = &get_help;
+        $result = "I've got nothing for $lib.";
     }
     return $result;
-}
-
-sub get_help{
-    return sprintf("Usage: $mynick <%s> <optional keyword>", join('|', keys(%config::dataset)));
 }
 
 sub init_api {
@@ -177,4 +189,43 @@ sub init_api {
     my $jsontext = do { local $/; <FILE>; };
     close(FILE);
     $apidata{ $myAPIkey } = decode_json($jsontext);
+}
+
+# We registered for all events, this will produce some debug info.
+sub _default {
+    my ($event, $args) = @_[ARG0 .. $#_];
+    my @output = ( "$event: " );
+
+    for my $arg (@$args) {
+        if ( ref $arg eq 'ARRAY' ) {
+            push( @output, '[' . join(', ', @$arg ) . ']' );
+        } else {
+            push ( @output, "'$arg'" );
+        }
+    }
+    print join ' ', @output, "\n";
+    return 0;
+}
+
+sub irc_connected {
+    print "Connected to $_[ARG0]\n";
+    print "Attempting to join: @channels\n";
+}
+
+sub irc_disconnect {
+    print "Disconnected from $_[ARG0]\n";
+}
+
+sub irc_join {
+    my $nick = ( split /!/, $_[ARG0] )[0];
+    printf "*** %s has joined channel %s\n", $nick, $_[ARG1];
+}
+
+sub irc_nick {
+    my $nick = ( split /!/, $_[ARG0] )[0];
+    print "$nick is now $_[ARG1]\n";
+}
+
+sub get_help{
+    return sprintf("Usage: $mynick <%s> <optional keyword>", join('|', keys(%config::dataset)));
 }
