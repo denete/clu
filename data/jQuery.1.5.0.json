@@ -2,6 +2,7 @@
         "lang": "JavaScript",
         "library": "jQuery",
         "version": "1.5.0",
+        "allow_edit": false,
         "entries": [
         { 
             "name": ".jquery", 

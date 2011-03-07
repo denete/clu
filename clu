@@ -21,7 +21,7 @@
 use strict;
 use vars qw($channel $mynick $irc $conn %data @channels @datakeys %cmds);
 use Text::Wrap qw(fill $columns);
-use JSON::XS;
+use JSON;
 use Data::Dumper;
 use POE;
 use POE::Component::IRC;
@@ -30,6 +30,7 @@ use POE::Component::IRC::Plugin::BotAddressed;
 
 require "config.pl";
 $columns = $config::msg_length;
+local $Data::Dumper::Terse = 1;
 
 @channels = $ARGV[0] ? ("#$ARGV[0]") : @config::ch;
 $mynick = $ARGV[1] ? $ARGV[1] : $config::nick;
@@ -102,9 +103,24 @@ sub irc_bot_addressed {
 sub get_response {
     my($nick, $route, $what) = @_;
     my $msg = "$nick: ";
+    # filtering the command requests here, trying to consolidate msg and bot_addressed
     if ($what =~ m/^help/i){
         $msg .= &get_help;
         $irc->yield( privmsg => $route => "$msg" );
+    } elsif ($what =~ m/^_add\s+(\w*)\s+(.*)/){ # add an entry
+        # clu _add cmgd <term>Your term here. <def>Your definition here. <url>http://your_url_here.com
+        #if ($what =~ m/^_add\s+(\w*)\s+(.*)/){
+        #}
+        if (exists $data{ $1 }){
+            #$what =~ s/^_add\s*\w*//;
+            $irc->yield( privmsg => $route => "$2" );
+        } else {
+            $msg .= &get_help;
+            $irc->yield( privmsg => $route => "$msg" );
+        }
+        return;
+        #my $out = to_json($data{ 'cmgd' }, {utf8 => 1, pretty => 1});
+        #print $out;
     } elsif ($what =~ m/^(\w+)\s?(\w+)?/){
         $msg .= &get_entries($1, $2);
         if($msg =~ m/\n/){
@@ -197,5 +213,6 @@ sub irc_nick {
 }
 
 sub get_help{
-    return sprintf("Usage: $mynick <%s> <optional keyword>", join('|', keys(%config::dataset)));
+    my $helpmsg = sprintf("Usage: $mynick <%s> <optional keyword>", join('|', keys(%config::dataset)));
+    return $helpmsg;
 }

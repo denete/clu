@@ -2,6 +2,7 @@
         "lang": "Fortran",
         "library": "libGoose",
         "version": "1.0.0",
+        "allow_edit": false,
         "entries": [
         {
             "name": "pluck",

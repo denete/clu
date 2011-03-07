@@ -2,6 +2,7 @@
         "lang": "",
         "library": "unix",
         "version": "",
+        "allow_edit": true,
         "entries": [
         {
             "name": "cd",
