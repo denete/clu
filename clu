@@ -6,6 +6,7 @@
 #   'library_keyword1' => 'data/library_datafile1',
 #   'library_keyword2' => 'data/library_datafile2',
 #  );
+#$config::default_set = 'library_keyword1';
 #$config::nick = 'nick_string';
 #$config::name = 'name_string';
 #$config::server = 'server_address';
@@ -52,7 +53,7 @@ my $irc = POE::Component::IRC->spawn(
 
 POE::Session->create(
     package_states => [
-        main => [ qw(_default _start irc_001 irc_botcmd_slap irc_public irc_bot_addressed irc_connected irc_disconnect irc_join irc_nick irc_msg) ]
+        main => [ qw(_default _start irc_001 irc_botcmd_shoot irc_public irc_bot_addressed irc_connected irc_disconnect irc_join irc_nick irc_msg) ]
     ],
     heap => { irc => $irc },
 );
@@ -78,10 +79,10 @@ sub irc_001 {
     return;
 }
 
-sub irc_botcmd_slap {
+sub irc_botcmd_shoot {
     my $nick = (split /!/, $_[ARG0])[0];
     my ($where, $arg) = @_[ARG1, ARG2];
-    $irc->yield(ctcp => $where, "ACTION slaps $arg");
+    $irc->yield(ctcp => $where, "ACTION shoots $arg *pew-pew*");
     return;
 }
 
@@ -172,6 +173,13 @@ sub get_entries {
     my ($lib, $keyword) = @_;
     my ($result);
     my (@term_array);
+    #if ((!exists $data{ $lib }) && (defined $lib) && ($lib ne '') && (exists $data{ $config::default_set })){
+    if ((defined $lib) && ($lib ne '')){
+        if ((!exists $data{ $lib }) && (exists $data{ $config::default_set })){
+            $keyword = $lib;
+            $lib = $config::default_set;
+        }
+    }
     if (exists $data{ $lib }){
         if ((defined $keyword) && ($keyword ne '') && (defined $lib) && ($lib ne '')){
             if ($keyword eq '_showall'){
