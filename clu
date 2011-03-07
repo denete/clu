@@ -107,20 +107,44 @@ sub get_response {
     if ($what =~ m/^help/i){
         $msg .= &get_help;
         $irc->yield( privmsg => $route => "$msg" );
-    } elsif ($what =~ m/^_add\s+(\w*)\s+(.*)/){ # add an entry
+    } elsif ($what =~ m/^_add/){ # add an entry
         # clu _add cmgd <term>Your term here. <def>Your definition here. <url>http://your_url_here.com
-        #if ($what =~ m/^_add\s+(\w*)\s+(.*)/){
-        #}
-        if (exists $data{ $1 }){
-            #$what =~ s/^_add\s*\w*//;
-            $irc->yield( privmsg => $route => "$2" );
+        $what =~ s/^_add\s+//;
+        if ($what =~ m/^(\w*)\s+(.*)/){
+            my ($libname, $argstring) = ($1, $2);
+            if (exists $data{ $libname }){
+                if($argstring =~ m/<term>(.*)<def>(.*)<url>(.*)/){
+                    my ($term, $def, $url) = ($1, $2, $3);
+                    $term =~ s/^\s+|\s+$//g;
+                    $def =~ s/^\s+|\s+$//g;
+                    $url =~ s/^\s+|\s+$//g;
+                    for my $entry (@{$data{ $libname }->{data}->{entries}}){
+                        if($term eq $entry->{term}){
+                            $irc->yield( privmsg => $route => "Entry $term already exists." );
+                            return;
+                        }
+                    }
+                    $msg .= "Adding $term -- $def [$url]";
+                    $irc->yield( privmsg => $route => $msg );
+                    push(@{$data{ $libname }->{data}->{entries}}, {
+                        term => $term,
+                        def => $def,
+                        url => $url,                        
+                    });
+                    #my $jsonOut = to_json($data{ $libname }, {utf8 => 1, pretty => 1});
+                    #print $jsonOut;
+                    &write_data($config::dataset{ $libname }, $jsonOut);
+                    return;
+                } else {
+                    $irc->yield( privmsg => $route => "Incomplete _add request." );
+                    return;
+                }
+            }
         } else {
             $msg .= &get_help;
             $irc->yield( privmsg => $route => "$msg" );
+            return;
         }
-        return;
-        #my $out = to_json($data{ 'cmgd' }, {utf8 => 1, pretty => 1});
-        #print $out;
     } elsif ($what =~ m/^(\w+)\s?(\w+)?/){
         $msg .= &get_entries($1, $2);
         if($msg =~ m/\n/){
@@ -144,23 +168,27 @@ sub get_response {
 sub get_entries {
     my ($lib, $keyword) = @_;
     my ($result);
-    my (@name_array);
+    my (@term_array);
     if (exists $data{ $lib }){
         if ((defined $keyword) && ($keyword ne '') && (defined $lib) && ($lib ne '')){
             if ($keyword eq '_showall'){
                 for my $entry (@{$data{ $lib }->{data}->{entries}}){
-                    $result .= "$entry->{name}, ";
+                    $result .= "$entry->{term}, ";
                 }
             } else {
                 for my $entry (@{$data{ $lib }->{data}->{entries}}){
-                    $result .= "$entry->{name} -- $entry->{def} [$entry->{url}]\n" if $entry->{name} =~ m/$keyword/i;
+                    if ($entry->{term} =~ m/$keyword/i){
+                        $result .= "$entry->{term} -- $entry->{def}";
+                        $result .=" [$entry->{url}]" if $entry->{url} ne '';
+                    }
+                    $result .= "$entry->{term} -- $entry->{def} [$entry->{url}]\n" if $entry->{term} =~ m/$keyword/i;
                 }
             }
             $result = "I've got nothing for $lib $keyword." if (!$result);
         } elsif ((defined $lib) && ($lib ne '')) {
                 my $randomNode = @{$data{ $lib }->{data}->{entries}}[rand @{$data{ $lib }->{data}->{entries}}];
-                $result .= "$randomNode->{name} -- $randomNode->{def}";
-                $result .=  "[$randomNode->{url}]" if $randomNode->{url} ne '';
+                $result .= "$randomNode->{term} -- $randomNode->{def}";
+                $result .= " [$randomNode->{url}]" if $randomNode->{url} ne '';
                 $result = "I've got nothing for $lib." if (!$result); # we should never see this
         }
     } else {
@@ -176,6 +204,14 @@ sub init_data {
     close(FILE);
     $data{ $myDatakey } = decode_json($jsontext);
 }
+
+sub write_data {
+    my ($myLibFile, $myJSONString) = @_;
+    open(FILE,">$myLibFile") || warn "Can't open $myLibFile: $!";
+    print FILE $myJSONString;
+    close(FILE);
+}
+
 
 # We registered for all events, this will produce some debug info.
 sub _default {

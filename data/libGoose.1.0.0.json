@@ -5,12 +5,12 @@
         "allow_edit": false,
         "entries": [
         {
-            "name": "pluck",
+            "term": "pluck",
             "def": "Remove the feathers from the object.",
             "url": "http://blah.blah.com/pluck/"
         },
         {
-            "name": "cat",
+            "term": "cat",
             "def": "Add CATS to the world.",
             "url": "http://blah.blah.com/cats/"
         }]

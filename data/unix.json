@@ -1,18 +1,25 @@
-{   "data": {
-        "lang": "",
-        "library": "unix",
-        "version": "",
-        "allow_edit": true,
-        "entries": [
-        {
-            "name": "cd",
-            "def": "Change the current working directory.",
-            "url": "http://www.gnu.org/software/bash/manual/bashref.html"
-        },
-        {
-            "name": "cat",
-            "def": "Display the contents of a file (concatenate)",
-            "url": "http://www.gnu.org/software/bash/manual/bashref.html"
-        }]
-    }
+{
+   "data" : {
+      "lang" : "",
+      "entries" : [
+         {
+            "def" : "Change the current working directory.",
+            "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
+            "term" : "cd"
+         },
+         {
+            "def" : "Display the contents of a file (concatenate)",
+            "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
+            "term" : "cat"
+         },
+         {
+            "def" : "This is your shell, or how you enter commands in the terminal.",
+            "url" : "http://en.wikipedia.org/wiki/Bash_(Unix_shell)",
+            "term" : "bash"
+         }
+      ],
+      "allow_edit" : true,
+      "version" : "",
+      "library" : "unix"
+   }
 }
