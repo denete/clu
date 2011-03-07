@@ -184,7 +184,6 @@ sub get_entries {
                         $result .= "$entry->{term} -- $entry->{def}";
                         $result .=" [$entry->{url}]" if $entry->{url} ne '';
                     }
-                    $result .= "$entry->{term} -- $entry->{def} [$entry->{url}]\n" if $entry->{term} =~ m/$keyword/i;
                 }
             }
             $result = "I've got nothing for $lib $keyword." if (!$result);
