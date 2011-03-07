@@ -135,8 +135,7 @@ sub get_response {
                         def => $def,
                         url => $url,                        
                     });
-                    #my $jsonOut = to_json($data{ $libname }, {utf8 => 1, pretty => 1});
-                    #print $jsonOut;
+                    my $jsonOut = to_json($data{ $libname }, {utf8 => 1, pretty => 1});
                     &write_data($config::dataset{ $libname }, $jsonOut);
                     return;
                 } else {
