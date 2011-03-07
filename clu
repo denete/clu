@@ -113,6 +113,10 @@ sub get_response {
         if ($what =~ m/^(\w*)\s+(.*)/){
             my ($libname, $argstring) = ($1, $2);
             if (exists $data{ $libname }){
+                if(!$data{ $libname }->{data}->{allow_edit}){
+                    $irc->yield( privmsg => $route => "The $libname dataset cannot be edited." );
+                    return;
+                }
                 if($argstring =~ m/<term>(.*)<def>(.*)<url>(.*)/){
                     my ($term, $def, $url) = ($1, $2, $3);
                     $term =~ s/^\s+|\s+$//g;
