@@ -53,7 +53,7 @@ my $irc = POE::Component::IRC->spawn(
 
 POE::Session->create(
     package_states => [
-        main => [ qw(_default _start irc_001 irc_botcmd_shoot irc_public irc_bot_addressed irc_connected irc_disconnect irc_join irc_nick irc_msg) ]
+        main => [ qw(_default _start irc_001 shoot_em irc_public irc_bot_addressed irc_connected irc_disconnect irc_join irc_nick irc_msg) ]
     ],
     heap => { irc => $irc },
 );
@@ -79,10 +79,9 @@ sub irc_001 {
     return;
 }
 
-sub irc_botcmd_shoot {
-    my $nick = (split /!/, $_[ARG0])[0];
-    my ($where, $arg) = @_[ARG1, ARG2];
-    $irc->yield(ctcp => $where, "ACTION shoots $arg *pew-pew*");
+sub shoot_em {
+    my ($who, $where) = @_;
+    $irc->yield(ctcp => $where, "ACTION shoots $who *pew-pew*");
     return;
 }
 
@@ -98,6 +97,10 @@ sub irc_msg {
 sub irc_bot_addressed {
     my $nick = ( split /!/, $_[ARG0] )[0];
     my $channel = $_[ARG1]->[0];
+    if($_[ARG2] =~ m/^shoot\s+(.*)/){
+        &shoot_em($1, $channel);
+        return;
+    }
     &get_response($nick, $channel, $_[ARG2]);
 }
 
