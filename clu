@@ -243,7 +243,7 @@ sub get_entries {
     if (exists $data{ $lib }){
         if ((defined $keyword) && ($keyword ne '') && (defined $lib) && ($lib ne '')){
             if ($keyword eq '_showall'){
-                $result .= "$lib -- ";
+                $result .= "($lib) -- ";
                 for my $entry (@{$data{ $lib }->{data}->{entries}}){
                     if($entry->{active}){
                         $result .= " $entry->{term},";

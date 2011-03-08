@@ -1,32 +1,38 @@
 {
    "data" : {
       "lang" : "Fortran",
-      "version" : "1.0.0",
-      "allow_edit" : true,
       "entries" : [
          {
-            "def" : "Remove the feathers from the object.",
-            "url" : "http://blah.blah.com/pluck/",
-            "active" : 1,
-            "term" : "pluck",
             "added_by" : "admin",
-            "added_by" : "admin"
-         },
-         {
-            "def" : "Add CATS to the world.",
-            "url" : "http://blah.blah.com/cats/",
-            "active" : 0,
-            "term" : "cat",
-            "added_by" : "admin"
-         },
-         {
-            "def" : "Add new CATS to the planet.",
+            "def" : "Remove the feathers from the object.",
             "active" : 1,
+            "url" : "http://blah.blah.com/pluck/",
+            "term" : "pluck"
+         },
+         {
+            "added_by" : "admin",
+            "def" : "Add CATS to the world.",
+            "active" : 0,
+            "url" : "http://blah.blah.com/cats/",
+            "term" : "cat"
+         },
+         {
+            "added_by" : "admin",
+            "def" : "Add new CATS to the planet.",
             "url" : "http://none.com/",
-            "term" : "cat",
-            "added_by" : "admin"
+            "active" : 1,
+            "term" : "cat"
+         },
+         {
+            "added_by" : "denete",
+            "def" : "The \"stuff\" you need to know",
+            "active" : 1,
+            "url" : "",
+            "term" : "References"
          }
       ],
+      "allow_edit" : true,
+      "version" : "1.0.0",
       "library" : "libGoose"
    }
 }
