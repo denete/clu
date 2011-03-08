@@ -1,18 +1,28 @@
-{   "data": {
-        "lang": "Fortran",
-        "library": "libGoose",
-        "version": "1.0.0",
-        "allow_edit": false,
-        "entries": [
-        {
-            "term": "pluck",
-            "def": "Remove the feathers from the object.",
-            "url": "http://blah.blah.com/pluck/"
-        },
-        {
-            "term": "cat",
-            "def": "Add CATS to the world.",
-            "url": "http://blah.blah.com/cats/"
-        }]
-    }
+{
+   "data" : {
+      "lang" : "Fortran",
+      "version" : "1.0.0",
+      "allow_edit" : true,
+      "entries" : [
+         {
+            "def" : "Remove the feathers from the object.",
+            "url" : "http://blah.blah.com/pluck/",
+            "active" : 1,
+            "term" : "pluck"
+         },
+         {
+            "def" : "Add CATS to the world.",
+            "url" : "http://blah.blah.com/cats/",
+            "active" : 0,
+            "term" : "cat"
+         },
+         {
+            "def" : "Add new CATS to the planet.",
+            "active" : 1,
+            "url" : "http://none.com/",
+            "term" : "cat"
+         }
+      ],
+      "library" : "libGoose"
+   }
 }

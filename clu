@@ -28,6 +28,7 @@ use POE;
 use POE::Component::IRC;
 use POE::Component::IRC::Plugin::AutoJoin;
 use POE::Component::IRC::Plugin::BotAddressed;
+use POE::Component::IRC::Plugin::BotCommand;
 
 require "config.pl";
 $columns = $config::msg_length;
@@ -63,6 +64,17 @@ $poe_kernel->run();
 sub _start {
     my $heap = $_[HEAP];
     my $irc = $heap->{irc};
+    
+    $irc->plugin_add('BotCommand', POE::Component::IRC::Plugin::BotCommand->new(
+             Commands => {
+                 _shoot   => 'Takes one argument: a nickname to shoot',
+                 _add => 'Usage: dataset <term>The_term <def>The_definition <url>http://the_url',
+                 _rm => 'Takes two arguments: the dataset and the entry term',
+                 _showall => 'Takes one argument: the dataset',
+             },
+             Ignore_unknown => 1
+         ));
+    
     $irc->plugin_add( 'BotAddressed', POE::Component::IRC::Plugin::BotAddressed->new() );
     $irc->plugin_add( 'AutoJoin', POE::Component::IRC::Plugin::AutoJoin->new(Channels => \@channels) );
     $irc->yield(register => 'all');
@@ -109,8 +121,38 @@ sub get_response {
     my $msg = "$nick: ";
     # filtering the command requests here, trying to consolidate msg and bot_addressed
     if ($what =~ m/^help/i){
-        $msg .= &get_help;
-        $irc->yield( privmsg => $route => "$msg" );
+        #$msg .= &get_help;
+        #$irc->yield( privmsg => $route => "$msg" );
+    } elsif ($what =~ m/^_rm/){
+        $what =~ s/^_rm\s+//;
+        if ($what =~ m/^(\w*)\s+(.*)/){
+            my ($libname, $argstring) = ($1, $2);
+            if (exists $data{ $libname }){
+                if(!$data{ $libname }->{data}->{allow_edit}){
+                    $irc->yield( privmsg => $route => "The $libname dataset cannot be edited." );
+                    return;
+                } else {
+                    for my $entry (@{$data{ $libname }->{data}->{entries}}){
+                        if($argstring eq $entry->{term}){
+                            $msg .= "Removing $argstring";
+                            $irc->yield( privmsg => $route => $msg );
+
+                            $entry->{active} = 0;
+                            my $jsonOut = to_json($data{ $libname }, {utf8 => 1, pretty => 1});
+                            &write_data($config::dataset{ $libname }, $jsonOut);
+                            return;
+                        }
+                    }
+                }
+            } else {
+                $irc->yield( privmsg => $route => "Incomplete _rm request." );
+                return;
+            }
+        } else {
+            $msg .= &get_help;
+            $irc->yield( privmsg => $route => "$msg" );
+            return;
+        }
     } elsif ($what =~ m/^_add/){ # add an entry
         # clu _add cmgd <term>Your term here. <def>Your definition here. <url>http://your_url_here.com
         $what =~ s/^_add\s+//;
@@ -127,17 +169,18 @@ sub get_response {
                     $def =~ s/^\s+|\s+$//g;
                     $url =~ s/^\s+|\s+$//g;
                     for my $entry (@{$data{ $libname }->{data}->{entries}}){
-                        if($term eq $entry->{term}){
-                            $irc->yield( privmsg => $route => "Entry $term already exists." );
+                        if(($term eq $entry->{term}) && ($entry->{active})){
+                            $irc->yield( privmsg => $route => "Entry $term in $libname already exists." );
                             return;
                         }
                     }
-                    $msg .= "Adding $term -- $def [$url]";
+                    $msg .= "Adding $term -- $def $url";
                     $irc->yield( privmsg => $route => $msg );
                     push(@{$data{ $libname }->{data}->{entries}}, {
                         term => $term,
                         def => $def,
-                        url => $url,                        
+                        url => $url,
+                        active => 1
                     });
                     my $jsonOut = to_json($data{ $libname }, {utf8 => 1, pretty => 1});
                     &write_data($config::dataset{ $libname }, $jsonOut);
@@ -151,6 +194,13 @@ sub get_response {
             $msg .= &get_help;
             $irc->yield( privmsg => $route => "$msg" );
             return;
+        }
+    } elsif ($what =~ m/^_showall\s?(\w+)?/){
+        $msg .= &get_entries('_showall', $1);
+        my @result = split(/\n/, fill('', '', $msg));
+        for my $line (@result) {
+            $irc->yield( privmsg => $route => "$line" );
+            #sleep 1;
         }
     } elsif ($what =~ m/^(\w+)\s?(\w+)?/){
         $msg .= &get_entries($1, $2);
@@ -187,27 +237,41 @@ sub get_entries {
         if ((defined $keyword) && ($keyword ne '') && (defined $lib) && ($lib ne '')){
             if ($keyword eq '_showall'){
                 for my $entry (@{$data{ $lib }->{data}->{entries}}){
-                    $result .= "$entry->{term}, ";
+                    if($entry->{active}){
+                        $result .= " $entry->{term},";
+                    }
                 }
+                chop($result);
             } else {
                 for my $entry (@{$data{ $lib }->{data}->{entries}}){
-                    if ($entry->{term} =~ m/$keyword/i){
+                    if ($entry->{active} && $entry->{term} =~ m/$keyword/i){
                         $result .= "$entry->{term} -- $entry->{def}";
-                        $result .=" [$entry->{url}]" if $entry->{url} ne '';
+                        $result .=" $entry->{url}" if $entry->{url} ne '';
                     }
                 }
             }
             $result = "I've got nothing for $lib $keyword." if (!$result);
         } elsif ((defined $lib) && ($lib ne '')) {
-                my $randomNode = @{$data{ $lib }->{data}->{entries}}[rand @{$data{ $lib }->{data}->{entries}}];
+                #my $randomNode = @{$data{ $lib }->{data}->{entries}}[rand @{$data{ $lib }->{data}->{entries}}];
+                my $randomNode = &get_random($lib);
                 $result .= "$randomNode->{term} -- $randomNode->{def}";
-                $result .= " [$randomNode->{url}]" if $randomNode->{url} ne '';
+                $result .= " $randomNode->{url}" if $randomNode->{url} ne '';
                 $result = "I've got nothing for $lib." if (!$result); # we should never see this
         }
     } else {
         $result = "I've got nothing for $lib.";
     }
     return $result;
+}
+
+sub get_random {
+    my ($lib) = @_;
+    my $randomNode = @{$data{ $lib }->{data}->{entries}}[rand @{$data{ $lib }->{data}->{entries}}];
+    if ($randomNode->{active}){
+        return $randomNode;
+    } else {
+        &get_random;
+    }
 }
 
 sub init_data {
@@ -224,7 +288,6 @@ sub write_data {
     print FILE $myJSONString;
     close(FILE);
 }
-
 
 # We registered for all events, this will produce some debug info.
 sub _default {
@@ -262,6 +325,6 @@ sub irc_nick {
 }
 
 sub get_help{
-    my $helpmsg = sprintf("Usage: $mynick <%s> <optional keyword>", join('|', keys(%config::dataset)));
+    my $helpmsg = sprintf("Usage: $mynick <%s|_showall|_add|_rm>", join('|', keys(%config::dataset)));
     return $helpmsg;
 }

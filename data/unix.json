@@ -5,17 +5,44 @@
          {
             "def" : "Change the current working directory.",
             "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
-            "term" : "cd"
+            "term" : "cd",
+            "active": 1
          },
          {
             "def" : "Display the contents of a file (concatenate)",
             "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
-            "term" : "cat"
+            "term" : "cat",
+            "active": 1
+         },
+         {
+            "term" : "man",
+            "def" : "Display helpful information about commands...manual pages.",
+            "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
+            "active": 1
+         },
+         {
+            "term" : "ls",
+            "def" : "List the files in the current directory, and (optionally) their characteristics",
+            "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
+            "active": 1
+         },
+         {
+            "term" : "alias",
+            "def" : "Create an alias, aliases allow a string to be substituted for a word when it is used as the first word of a simple command.",
+            "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
+            "active": 1
+         },
+         {
+            "term" : "exit",
+            "def" : "Exit the shell. Also ctrl-d.",
+            "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
+            "active": 1
          },
          {
             "def" : "This is your shell, or how you enter commands in the terminal.",
-            "url" : "http://en.wikipedia.org/wiki/Bash_(Unix_shell)",
-            "term" : "bash"
+            "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
+            "term" : "bash",
+            "active": 0
          }
       ],
       "allow_edit" : true,
