@@ -1,52 +1,73 @@
 {
    "data" : {
       "lang" : "",
+      "version" : "",
+      "allow_edit" : true,
       "entries" : [
          {
             "def" : "Change the current working directory.",
+            "active" : 1,
             "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
             "term" : "cd",
-            "active": 1
+            "added_by" : "admin"
          },
          {
             "def" : "Display the contents of a file (concatenate)",
+            "active" : 1,
             "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
             "term" : "cat",
-            "active": 1
+            "added_by" : "admin"
          },
          {
-            "term" : "man",
             "def" : "Display helpful information about commands...manual pages.",
+            "active" : 1,
             "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
-            "active": 1
+            "term" : "man",
+            "added_by" : "admin"
          },
          {
-            "term" : "ls",
             "def" : "List the files in the current directory, and (optionally) their characteristics",
+            "active" : 1,
             "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
-            "active": 1
+            "term" : "ls",
+            "added_by" : "admin"
          },
          {
-            "term" : "alias",
             "def" : "Create an alias, aliases allow a string to be substituted for a word when it is used as the first word of a simple command.",
+            "active" : 1,
             "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
-            "active": 1
+            "term" : "alias",
+            "added_by" : "admin"
          },
          {
-            "term" : "exit",
             "def" : "Exit the shell. Also ctrl-d.",
+            "active" : 1,
             "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
-            "active": 1
+            "term" : "exit",
+            "added_by" : "admin"
          },
          {
             "def" : "This is your shell, or how you enter commands in the terminal.",
+            "active" : 0,
             "url" : "http://www.gnu.org/software/bash/manual/bashref.html",
             "term" : "bash",
-            "active": 0
+            "added_by" : "admin"
+         },
+         {
+            "def" : "Build a Linux/Unix file system, usually a hard disk partition.",
+            "active" : 1,
+            "url" : "http://en.wikipedia.org/wiki/Mkfs",
+            "term" : "mkfs",
+            "added_by" : "admin"
+         },
+         {
+            "def" : "ALL ABOARD!",
+            "active" : 1,
+            "url" : "",
+            "term" : "sl",
+            "added_by" : "admin"
          }
       ],
-      "allow_edit" : true,
-      "version" : "",
       "library" : "unix"
    }
 }

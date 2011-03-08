@@ -8,1759 +8,2052 @@
             "term": ".jquery", 
             "def": "A string containing the jQuery version number.", 
             "url": "http://api.jquery.com/.jquery/",
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".add()", 
             "def": "Add elements to the set of matched elements.", 
             "url": "http://api.jquery.com/add/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".addClass()", 
             "def": "Adds the specified class(es) to each of the set of matched elements.", 
             "url": "http://api.jquery.com/addClass/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".after()", 
             "def": "Insert content, specified by the parameter, after each element in the set of matched elements.", 
             "url": "http://api.jquery.com/after/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.ajax()", 
             "def": "Perform an asynchronous HTTP (Ajax) request.", 
             "url": "http://api.jquery.com/jQuery.ajax/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".ajaxComplete()", 
             "def": "Register a handler to be called when Ajax requests complete. This is an Ajax Event.", 
             "url": "http://api.jquery.com/ajaxComplete/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".ajaxError()", 
             "def": "Register a handler to be called when Ajax requests complete with an error. This is an Ajax Event.", 
             "url": "http://api.jquery.com/ajaxError/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".ajaxSend()", 
             "def": "Attach a function to be executed before an Ajax request is sent. This is an Ajax Event.", 
             "url": "http://api.jquery.com/ajaxSend/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.ajaxSetup()", 
             "def": "Set default values for future Ajax requests.", 
             "url": "http://api.jquery.com/jQuery.ajaxSetup/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".ajaxStart()", 
             "def": "Register a handler to be called when the first Ajax request begins. This is an Ajax Event.", 
             "url": "http://api.jquery.com/ajaxStart/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".ajaxStop()", 
             "def": "Register a handler to be called when all Ajax requests have completed. This is an Ajax Event.", 
             "url": "http://api.jquery.com/ajaxStop/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".ajaxSuccess()", 
             "def": "Attach a function to be executed whenever an Ajax request completes successfully. This is an Ajax Event.", 
             "url": "http://api.jquery.com/ajaxSuccess/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "All Selector (\"*\")", 
             "def": "Selects all elements.", 
             "url": "http://api.jquery.com/all-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".andSelf()", 
             "def": "Add the previous set of elements on the stack to the current set.", 
             "url": "http://api.jquery.com/andSelf/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".animate()", 
             "def": "Perform a custom animation of a set of CSS properties.", 
             "url": "http://api.jquery.com/animate/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":animated Selector", 
             "def": "Select all elements that are in the progress of an animation at the time the selector is run.", 
             "url": "http://api.jquery.com/animated-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".append()", 
             "def": "Insert content, specified by the parameter, to the end of each element in the set of matched elements.", 
             "url": "http://api.jquery.com/append/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".appendTo()", 
             "def": "Insert every element in the set of matched elements to the end of the target.", 
             "url": "http://api.jquery.com/appendTo/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".attr()", 
             "def": "Get the value of an attribute for the first element in the set of matched elements.", 
             "url": "http://api.jquery.com/attr/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Attribute Contains Prefix Selector [name|=\"value\"]", 
             "def": "Selects elements that have the specified attribute with a value either equal to a given string or starting with that string followed by a hyphen (-).", 
             "url": "http://api.jquery.com/attribute-contains-prefix-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Attribute Contains Selector [name*=\"value\"]", 
             "def": "Selects elements that have the specified attribute with a value containing the a given substring.", 
             "url": "http://api.jquery.com/attribute-contains-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Attribute Contains Word Selector [name~=\"value\"]", 
             "def": "Selects elements that have the specified attribute with a value containing a given word, delimited by spaces.", 
             "url": "http://api.jquery.com/attribute-contains-word-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Attribute Ends With Selector [name$=\"value\"]", 
             "def": "Selects elements that have the specified attribute with a value ending exactly with a given string. The comparison is case sensitive.", 
             "url": "http://api.jquery.com/attribute-ends-with-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Attribute Equals Selector [name=\"value\"]", 
             "def": "Selects elements that have the specified attribute with a value exactly equal to a certain value.", 
             "url": "http://api.jquery.com/attribute-equals-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Attribute Not Equal Selector [name!=\"value\"]", 
             "def": "Select elements that either don&#39;t have the specified attribute, or do have the specified attribute but not with a certain value.", 
             "url": "http://api.jquery.com/attribute-not-equal-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Attribute Starts With Selector [name^=\"value\"]", 
             "def": "Selects elements that have the specified attribute with a value beginning exactly with a given string.", 
             "url": "http://api.jquery.com/attribute-starts-with-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".before()", 
             "def": "Insert content, specified by the parameter, before each element in the set of matched elements.", 
             "url": "http://api.jquery.com/before/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".bind()", 
             "def": "Attach a handler to an event for the elements.", 
             "url": "http://api.jquery.com/bind/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".blur()", 
             "def": "Bind an event handler to the \"blur\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/blur/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.boxModel", 
             "def": "Deprecated in jQuery 1.3 (see jQuery.support). States if the current page, in the user&#39;s browser, is being rendered using the W3C CSS Box Model.", 
             "url": "http://api.jquery.com/jQuery.boxModel/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.browser", 
             "def": "Contains flags for the useragent, read from navigator.userAgent. We recommend against using this property; please try to use feature detection instead (see jQuery.support). jQuery.browser may be moved to a plugin in a future release of jQuery. ", 
             "url": "http://api.jquery.com/jQuery.browser/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":button Selector", 
             "def": "Selects all button elements and elements of type button.", 
             "url": "http://api.jquery.com/button-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".change()", 
             "def": "Bind an event handler to the \"change\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/change/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":checkbox Selector", 
             "def": "Selects all elements of type checkbox.", 
             "url": "http://api.jquery.com/checkbox-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":checked Selector", 
             "def": "Matches all elements that are checked.", 
             "url": "http://api.jquery.com/checked-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Child Selector (\"parent > child\")", 
             "def": "Selects all direct child elements specified by \"child\" of elements specified by \"parent\".", 
             "url": "http://api.jquery.com/child-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".children()", 
             "def": "Get the children of each element in the set of matched elements, optionally filtered by a selector.", 
             "url": "http://api.jquery.com/children/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Class Selector (\".class\")", 
             "def": "Selects all elements with the given class. ", 
             "url": "http://api.jquery.com/class-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".clearQueue()", 
             "def": "Remove from the queue all items that have not yet been run.", 
             "url": "http://api.jquery.com/clearQueue/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".click()", 
             "def": "Bind an event handler to the \"click\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/click/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".clone()", 
             "def": "Create a deep copy of the set of matched elements.", 
             "url": "http://api.jquery.com/clone/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".closest()", 
             "def": "Get the first ancestor element that matches the selector, beginning at the current element and progressing up through the DOM tree.", 
             "url": "http://api.jquery.com/closest/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.contains()", 
             "def": "Check to see if a DOM node is within another DOM node.", 
             "url": "http://api.jquery.com/jQuery.contains/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":contains() Selector", 
             "def": "Select all elements that contain the specified text.", 
             "url": "http://api.jquery.com/contains-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".contents()", 
             "def": "Get the children of each element in the set of matched elements, including text and comment nodes.", 
             "url": "http://api.jquery.com/contents/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".context", 
             "def": "The DOM node context originally passed to jQuery(); if none was passed then context will likely be the document.", 
             "url": "http://api.jquery.com/context/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".css()", 
             "def": "Get the value of a style property for the first element in the set of matched elements.", 
             "url": "http://api.jquery.com/css/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.cssHooks", 
             "def": "Provides a way to hook directly into jQuery to override how particular CSS properties are retrieved or set. Amongst other uses, cssHooks can be used to create custom, browser-normalized properties for CSS3 features such as box-shadows and gradients.", 
             "url": "http://api.jquery.com/jQuery.cssHooks/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".data()", 
             "def": "Store arbitrary data associated with the matched elements.", 
             "url": "http://api.jquery.com/data/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.data()", 
             "def": "Store arbitrary data associated with the specified element.", 
             "url": "http://api.jquery.com/jQuery.data/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".dblclick()", 
             "def": "Bind an event handler to the \"dblclick\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/dblclick/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "deferred.done()", 
             "def": " Add handlers to be called when the Deferred object is resolved. ", 
             "url": "http://api.jquery.com/deferred.done/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "deferred.fail()", 
             "def": " Add handlers to be called when the Deferred object is rejected. ", 
             "url": "http://api.jquery.com/deferred.fail/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "deferred.isRejected()", 
             "def": " Determine whether a Deferred object has been rejected. ", 
             "url": "http://api.jquery.com/deferred.isRejected/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "deferred.isResolved()", 
             "def": " Determine whether a Deferred object has been resolved. ", 
             "url": "http://api.jquery.com/deferred.isResolved/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "deferred.promise()", 
             "def": " Return a Deferred&#39;s Promise object. ", 
             "url": "http://api.jquery.com/deferred.promise/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "deferred.reject()", 
             "def": " Reject a Deferred object and call any failCallbacks with the given args. ", 
             "url": "http://api.jquery.com/deferred.reject/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "deferred.rejectWith()", 
             "def": " Reject a Deferred object and call any failCallbacks with the given context and args. ", 
             "url": "http://api.jquery.com/deferred.rejectWith/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "deferred.resolve()", 
             "def": " Resolve a Deferred object and call any doneCallbacks with the given args. ", 
             "url": "http://api.jquery.com/deferred.resolve/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "deferred.resolveWith()", 
             "def": " Resolve a Deferred object and call any doneCallbacks with the given context and args. ", 
             "url": "http://api.jquery.com/deferred.resolveWith/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "deferred.then()", 
             "def": " Add handlers to be called when the Deferred object is resolved or rejected. ", 
             "url": "http://api.jquery.com/deferred.then/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".delay()", 
             "def": "Set a timer to delay execution of subsequent items in the queue.", 
             "url": "http://api.jquery.com/delay/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".delegate()", 
             "def": "Attach a handler to one or more events for all elements that match the selector, now or in the future, based on a specific set of root elements.", 
             "url": "http://api.jquery.com/delegate/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".dequeue()", 
             "def": "Execute the next function on the queue for the matched elements.", 
             "url": "http://api.jquery.com/dequeue/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.dequeue()", 
             "def": "Execute the next function on the queue for the matched element.", 
             "url": "http://api.jquery.com/jQuery.dequeue/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Descendant Selector (\"ancestor descendant\")", 
             "def": "Selects all elements that are descendants of a given ancestor.", 
             "url": "http://api.jquery.com/descendant-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".detach()", 
             "def": "Remove the set of matched elements from the DOM.", 
             "url": "http://api.jquery.com/detach/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".die()", 
             "def": "Remove all event handlers previously attached using .live() from the elements.", 
             "url": "http://api.jquery.com/die/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":disabled Selector", 
             "def": "Selects all elements that are disabled.", 
             "url": "http://api.jquery.com/disabled-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.each()", 
             "def": "A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function&#39;s arguments object) are iterated by numeric index, from 0 to length-1. Other objects are iterated via their named properties.", 
             "url": "http://api.jquery.com/jQuery.each/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".each()", 
             "def": "Iterate over a jQuery object, executing a function for each matched element. ", 
             "url": "http://api.jquery.com/each/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Element Selector (\"element\")", 
             "def": "Selects all elements with the given tag name.", 
             "url": "http://api.jquery.com/element-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".empty()", 
             "def": "Remove all child nodes of the set of matched elements from the DOM.", 
             "url": "http://api.jquery.com/empty/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":empty Selector", 
             "def": "Select all elements that have no children (including text nodes).", 
             "url": "http://api.jquery.com/empty-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":enabled Selector", 
             "def": "Selects all elements that are enabled.", 
             "url": "http://api.jquery.com/enabled-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".end()", 
             "def": "End the most recent filtering operation in the current chain and return the set of matched elements to its previous state.", 
             "url": "http://api.jquery.com/end/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".eq()", 
             "def": "Reduce the set of matched elements to the one at the specified index.", 
             "url": "http://api.jquery.com/eq/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":eq() Selector", 
             "def": "Select the element at index n within the matched set.", 
             "url": "http://api.jquery.com/eq-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".error()", 
             "def": "Bind an event handler to the \"error\" JavaScript event.", 
             "url": "http://api.jquery.com/error/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.error", 
             "def": "Takes a string and throws an exception containing it.", 
             "url": "http://api.jquery.com/jQuery.error/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":even Selector", 
             "def": "Selects even elements, zero-indexed.  See also odd.", 
             "url": "http://api.jquery.com/even-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.currentTarget", 
             "def": " The current DOM element within the event bubbling phase.  ", 
             "url": "http://api.jquery.com/event.currentTarget/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.data", 
             "def": " The optional data passed to jQuery.fn.bind when the current executing handler was bound.  ", 
             "url": "http://api.jquery.com/event.data/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.isDefaultPrevented()", 
             "def": "Returns whether event.preventDefault() was ever called on this event object. ", 
             "url": "http://api.jquery.com/event.isDefaultPrevented/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.isImmediatePropagationStopped()", 
             "def": "  Returns whether event.stopImmediatePropagation() was ever called on this event object. ", 
             "url": "http://api.jquery.com/event.isImmediatePropagationStopped/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.isPropagationStopped()", 
             "def": "  Returns whether event.stopPropagation() was ever called on this event object. ", 
             "url": "http://api.jquery.com/event.isPropagationStopped/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.namespace", 
             "def": "The namespace specified when the event was triggered.", 
             "url": "http://api.jquery.com/event.namespace/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.pageX", 
             "def": "The mouse position relative to the left edge of the document. ", 
             "url": "http://api.jquery.com/event.pageX/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.pageY", 
             "def": "The mouse position relative to the top edge of the document. ", 
             "url": "http://api.jquery.com/event.pageY/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.preventDefault()", 
             "def": " If this method is called, the default action of the event will not be triggered. ", 
             "url": "http://api.jquery.com/event.preventDefault/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.relatedTarget", 
             "def": "  The other DOM element involved in the event, if any. ", 
             "url": "http://api.jquery.com/event.relatedTarget/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.result", 
             "def": " The last value returned by an event handler that was triggered by this event, unless the value was undefined.  ", 
             "url": "http://api.jquery.com/event.result/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.stopImmediatePropagation()", 
             "def": "Prevents other event handlers from being called.", 
             "url": "http://api.jquery.com/event.stopImmediatePropagation/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.stopPropagation()", 
             "def": "Prevents the event from bubbling up the DOM tree, preventing any parent handlers from being notified of the event.   ", 
             "url": "http://api.jquery.com/event.stopPropagation/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.target", 
             "def": " The DOM element that initiated the event.  ", 
             "url": "http://api.jquery.com/event.target/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.timeStamp", 
             "def": "The difference in milliseconds between the time an event is triggered and January 1, 1970.", 
             "url": "http://api.jquery.com/event.timeStamp/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.type", 
             "def": " Describes the nature of the event.  ", 
             "url": "http://api.jquery.com/event.type/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "event.which", 
             "def": " For key or button events, this attribute indicates the specific button or key that was pressed.  ", 
             "url": "http://api.jquery.com/event.which/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.extend()", 
             "def": "Merge the contents of two or more objects together into the first object.", 
             "url": "http://api.jquery.com/jQuery.extend/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".fadeIn()", 
             "def": "Display the matched elements by fading them to opaque.", 
             "url": "http://api.jquery.com/fadeIn/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".fadeOut()", 
             "def": "Hide the matched elements by fading them to transparent.", 
             "url": "http://api.jquery.com/fadeOut/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".fadeTo()", 
             "def": "Adjust the opacity of the matched elements.", 
             "url": "http://api.jquery.com/fadeTo/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".fadeToggle()", 
             "def": "Display or hide the matched elements by animating their opacity.", 
             "url": "http://api.jquery.com/fadeToggle/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":file Selector", 
             "def": "Selects all elements of type file.", 
             "url": "http://api.jquery.com/file-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".filter()", 
             "def": "Reduce the set of matched elements to those that match the selector or pass the function&#39;s test. ", 
             "url": "http://api.jquery.com/filter/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".find()", 
             "def": "Get the descendants of each element in the current set of matched elements, filtered by a selector.", 
             "url": "http://api.jquery.com/find/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".first()", 
             "def": "Reduce the set of matched elements to the first in the set.", 
             "url": "http://api.jquery.com/first/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":first-child Selector", 
             "def": "Selects all elements that are the first child of their parent.", 
             "url": "http://api.jquery.com/first-child-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":first Selector", 
             "def": "Selects the first matched element.", 
             "url": "http://api.jquery.com/first-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".focus()", 
             "def": "Bind an event handler to the \"focus\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/focus/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".focusin()", 
             "def": "Bind an event handler to the \"focusin\" JavaScript event.", 
             "url": "http://api.jquery.com/focusin/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".focusout()", 
             "def": "Bind an event handler to the \"focusout\" JavaScript event.", 
             "url": "http://api.jquery.com/focusout/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.fx.interval", 
             "def": "The rate (in milliseconds) at which animations fire.", 
             "url": "http://api.jquery.com/jQuery.fx.interval/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.fx.off", 
             "def": "Globally disable all animations.", 
             "url": "http://api.jquery.com/jQuery.fx.off/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.get()", 
             "def": "Load data from the server using a HTTP GET request.", 
             "url": "http://api.jquery.com/jQuery.get/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".get()", 
             "def": "Retrieve the DOM elements matched by the jQuery object.", 
             "url": "http://api.jquery.com/get/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.getJSON()", 
             "def": "Load JSON-encoded data from the server using a GET HTTP request.", 
             "url": "http://api.jquery.com/jQuery.getJSON/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.getScript()", 
             "def": "Load a JavaScript file from the server using a GET HTTP request, then execute it.", 
             "url": "http://api.jquery.com/jQuery.getScript/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.globalEval()", 
             "def": "Execute some JavaScript code globally.", 
             "url": "http://api.jquery.com/jQuery.globalEval/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.grep()", 
             "def": "Finds the elements of an array which satisfy a filter function. The original array is not affected.", 
             "url": "http://api.jquery.com/jQuery.grep/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":gt() Selector", 
             "def": "Select all elements at an index greater than index within the matched set.", 
             "url": "http://api.jquery.com/gt-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".has()", 
             "def": "Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.", 
             "url": "http://api.jquery.com/has/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Has Attribute Selector [name]", 
             "def": "Selects elements that have the specified attribute, with any value. ", 
             "url": "http://api.jquery.com/has-attribute-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":has() Selector", 
             "def": "Selects elements which contain at least one element that matches the specified selector.", 
             "url": "http://api.jquery.com/has-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".hasClass()", 
             "def": "Determine whether any of the matched elements are assigned the given class.", 
             "url": "http://api.jquery.com/hasClass/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.hasData()", 
             "def": "Determine whether an element has any jQuery data associated with it.", 
             "url": "http://api.jquery.com/jQuery.hasData/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":header Selector", 
             "def": "Selects all elements that are headers, like h1, h2, h3 and so on.", 
             "url": "http://api.jquery.com/header-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".height()", 
             "def": "Get the current computed height for the first element in the set of matched elements.", 
             "url": "http://api.jquery.com/height/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":hidden Selector", 
             "def": "Selects all elements that are hidden.", 
             "url": "http://api.jquery.com/hidden-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".hide()", 
             "def": "Hide the matched elements.", 
             "url": "http://api.jquery.com/hide/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".hover()", 
             "def": "Bind two handlers to the matched elements, to be executed when the mouse pointer enters and leaves the elements.", 
             "url": "http://api.jquery.com/hover/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".html()", 
             "def": "Get the HTML contents of the first element in the set of matched elements.", 
             "url": "http://api.jquery.com/html/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "ID Selector (\"#id\")", 
             "def": "Selects a single element with the given id attribute. ", 
             "url": "http://api.jquery.com/id-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":image Selector", 
             "def": "Selects all elements of type image.", 
             "url": "http://api.jquery.com/image-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.inArray()", 
             "def": "Search for a specified value within an array and return its index (or -1 if not found).", 
             "url": "http://api.jquery.com/jQuery.inArray/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".index()", 
             "def": "Search for a given element from among the matched elements.", 
             "url": "http://api.jquery.com/index/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".innerHeight()", 
             "def": "Get the current computed height for the first element in the set of matched elements, including padding but not border.", 
             "url": "http://api.jquery.com/innerHeight/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".innerWidth()", 
             "def": "Get the current computed width for the first element in the set of matched elements, including padding but not border.", 
             "url": "http://api.jquery.com/innerWidth/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":input Selector", 
             "def": "Selects all input, textarea, select and button elements.", 
             "url": "http://api.jquery.com/input-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".insertAfter()", 
             "def": "Insert every element in the set of matched elements after the target.", 
             "url": "http://api.jquery.com/insertAfter/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".insertBefore()", 
             "def": "Insert every element in the set of matched elements before the target.", 
             "url": "http://api.jquery.com/insertBefore/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".is()", 
             "def": "Check the current matched set of elements against a selector and return true if at least one of these elements matches the selector.", 
             "url": "http://api.jquery.com/is/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.isArray()", 
             "def": "Determine whether the argument is an array.", 
             "url": "http://api.jquery.com/jQuery.isArray/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.isEmptyObject()", 
             "def": "Check to see if an object is empty (contains no properties).", 
             "url": "http://api.jquery.com/jQuery.isEmptyObject/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.isFunction()", 
             "def": "Determine if the argument passed is a Javascript function object. ", 
             "url": "http://api.jquery.com/jQuery.isFunction/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.isPlainObject()", 
             "def": "Check to see if an object is a plain object (created using \"{}\" or \"new Object\").", 
             "url": "http://api.jquery.com/jQuery.isPlainObject/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.isWindow()", 
             "def": "Determine whether the argument is a window.", 
             "url": "http://api.jquery.com/jQuery.isWindow/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.isXMLDoc()", 
             "def": "Check to see if a DOM node is within an XML document (or is an XML document).", 
             "url": "http://api.jquery.com/jQuery.isXMLDoc/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery()", 
             "def": "Accepts a string containing a CSS selector which is then used to match a set of elements.", 
             "url": "http://api.jquery.com/jQuery/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".keydown()", 
             "def": "Bind an event handler to the \"keydown\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/keydown/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".keypress()", 
             "def": "Bind an event handler to the \"keypress\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/keypress/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".keyup()", 
             "def": "Bind an event handler to the \"keyup\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/keyup/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".last()", 
             "def": "Reduce the set of matched elements to the final one in the set.", 
             "url": "http://api.jquery.com/last/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":last-child Selector", 
             "def": "Selects all elements that are the last child of their parent.", 
             "url": "http://api.jquery.com/last-child-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":last Selector", 
             "def": "Selects the last matched element.", 
             "url": "http://api.jquery.com/last-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".length", 
             "def": "The number of elements in the jQuery object.", 
             "url": "http://api.jquery.com/length/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".live()", 
             "def": "Attach a handler to the event for all elements which match the current selector, now and in the future.", 
             "url": "http://api.jquery.com/live/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".load()", 
             "def": "Load data from the server and place the returned HTML into the matched element.", 
             "url": "http://api.jquery.com/load/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".load()", 
             "def": "Bind an event handler to the \"load\" JavaScript event.", 
             "url": "http://api.jquery.com/load-event/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":lt() Selector", 
             "def": "Select all elements at an index less than index within the matched set.", 
             "url": "http://api.jquery.com/lt-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.makeArray()", 
             "def": "Convert an array-like object into a true JavaScript array.", 
             "url": "http://api.jquery.com/jQuery.makeArray/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".map()", 
             "def": "Pass each element in the current matched set through a function, producing a new jQuery object containing the return values.", 
             "url": "http://api.jquery.com/map/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.map()", 
             "def": "Translate all items in an array or array-like object to another array of items.", 
             "url": "http://api.jquery.com/jQuery.map/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.merge()", 
             "def": "Merge the contents of two arrays together into the first array. ", 
             "url": "http://api.jquery.com/jQuery.merge/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".mousedown()", 
             "def": "Bind an event handler to the \"mousedown\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/mousedown/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".mouseenter()", 
             "def": "Bind an event handler to be fired when the mouse enters an element, or trigger that handler on an element.", 
             "url": "http://api.jquery.com/mouseenter/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".mouseleave()", 
             "def": "Bind an event handler to be fired when the mouse leaves an element, or trigger that handler on an element.", 
             "url": "http://api.jquery.com/mouseleave/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".mousemove()", 
             "def": "Bind an event handler to the \"mousemove\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/mousemove/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".mouseout()", 
             "def": "Bind an event handler to the \"mouseout\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/mouseout/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".mouseover()", 
             "def": "Bind an event handler to the \"mouseover\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/mouseover/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".mouseup()", 
             "def": "Bind an event handler to the \"mouseup\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/mouseup/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Multiple Attribute Selector [name=\"value\"][name2=\"value2\"]", 
             "def": "Matches elements that match all of the specified attribute filters.", 
             "url": "http://api.jquery.com/multiple-attribute-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Multiple Selector (\"selector1, selector2, selectorN\")", 
             "def": "Selects the combined results of all the specified selectors.", 
             "url": "http://api.jquery.com/multiple-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".next()", 
             "def": "Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.", 
             "url": "http://api.jquery.com/next/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Next Adjacent Selector (\"prev + next\")", 
             "def": "Selects all next elements matching \"next\" that are immediately preceded by a sibling \"prev\".", 
             "url": "http://api.jquery.com/next-adjacent-Selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "Next Siblings Selector (\"prev ~ siblings\")", 
             "def": "Selects all sibling elements that follow after the \"prev\" element, have the same parent, and match the filtering \"siblings\" selector.", 
             "url": "http://api.jquery.com/next-siblings-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".nextAll()", 
             "def": "Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.", 
             "url": "http://api.jquery.com/nextAll/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".nextUntil()", 
             "def": "Get all following siblings of each element up to but not including the element matched by the selector.", 
             "url": "http://api.jquery.com/nextUntil/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.noConflict()", 
             "def": "Relinquish jQuery&#39;s control of the $ variable.", 
             "url": "http://api.jquery.com/jQuery.noConflict/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.noop()", 
             "def": "An empty function.", 
             "url": "http://api.jquery.com/jQuery.noop/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".not()", 
             "def": "Remove elements from the set of matched elements.", 
             "url": "http://api.jquery.com/not/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":not() Selector", 
             "def": "Selects all elements that do not match the given selector.", 
             "url": "http://api.jquery.com/not-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.now()", 
             "def": "Return a number representing the current time.", 
             "url": "http://api.jquery.com/jQuery.now/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":nth-child() Selector", 
             "def": "Selects all elements that are the nth-child of their parent.", 
             "url": "http://api.jquery.com/nth-child-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":odd Selector", 
             "def": "Selects odd elements, zero-indexed.  See also even.", 
             "url": "http://api.jquery.com/odd-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".offset()", 
             "def": "Get the current coordinates of the first element in the set of matched elements, relative to the document.", 
             "url": "http://api.jquery.com/offset/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".offsetParent()", 
             "def": "Get the closest ancestor element that is positioned.", 
             "url": "http://api.jquery.com/offsetParent/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".one()", 
             "def": "Attach a handler to an event for the elements. The handler is executed at most once per element.", 
             "url": "http://api.jquery.com/one/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":only-child Selector", 
             "def": "Selects all elements that are the only child of their parent.", 
             "url": "http://api.jquery.com/only-child-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".outerHeight()", 
             "def": "Get the current computed height for the first element in the set of matched elements, including padding, border, and optionally margin.", 
             "url": "http://api.jquery.com/outerHeight/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".outerWidth()", 
             "def": "Get the current computed width for the first element in the set of matched elements, including padding and border.", 
             "url": "http://api.jquery.com/outerWidth/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.param()", 
             "def": "Create a serialized representation of an array or object, suitable for use in a URL query string or Ajax request. ", 
             "url": "http://api.jquery.com/jQuery.param/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".parent()", 
             "def": "Get the parent of each element in the current set of matched elements, optionally filtered by a selector.", 
             "url": "http://api.jquery.com/parent/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":parent Selector", 
             "def": "Select all elements that are the parent of another element, including text nodes.", 
             "url": "http://api.jquery.com/parent-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".parents()", 
             "def": "Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.", 
             "url": "http://api.jquery.com/parents/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".parentsUntil()", 
             "def": "Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector.", 
             "url": "http://api.jquery.com/parentsUntil/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.parseJSON", 
             "def": "Takes a well-formed JSON string and returns the resulting JavaScript object.", 
             "url": "http://api.jquery.com/jQuery.parseJSON/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.parseXML()", 
             "def": "Parses a string into an XML document.", 
             "url": "http://api.jquery.com/jQuery.parseXML/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":password Selector", 
             "def": "Selects all elements of type password.", 
             "url": "http://api.jquery.com/password-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".position()", 
             "def": "Get the current coordinates of the first element in the set of matched elements, relative to the offset parent.", 
             "url": "http://api.jquery.com/position/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.post()", 
             "def": "Load data from the server using a HTTP POST request.", 
             "url": "http://api.jquery.com/jQuery.post/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".prepend()", 
             "def": "Insert content, specified by the parameter, to the beginning of each element in the set of matched elements.", 
             "url": "http://api.jquery.com/prepend/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".prependTo()", 
             "def": "Insert every element in the set of matched elements to the beginning of the target.", 
             "url": "http://api.jquery.com/prependTo/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".prev()", 
             "def": "Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector.", 
             "url": "http://api.jquery.com/prev/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".prevAll()", 
             "def": "Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.", 
             "url": "http://api.jquery.com/prevAll/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".prevUntil()", 
             "def": "Get all preceding siblings of each element up to but not including the element matched by the selector.", 
             "url": "http://api.jquery.com/prevUntil/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.proxy()", 
             "def": "Takes a function and returns a new one that will always have a particular context.", 
             "url": "http://api.jquery.com/jQuery.proxy/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".pushStack()", 
             "def": "Add a collection of DOM elements onto the jQuery stack.", 
             "url": "http://api.jquery.com/pushStack/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".queue()", 
             "def": "Show the queue of functions to be executed on the matched elements.", 
             "url": "http://api.jquery.com/queue/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.queue()", 
             "def": "Show the queue of functions to be executed on the matched element.", 
             "url": "http://api.jquery.com/jQuery.queue/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":radio Selector", 
             "def": "Selects all  elements of type radio.", 
             "url": "http://api.jquery.com/radio-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".ready()", 
             "def": "Specify a function to execute when the DOM is fully loaded.", 
             "url": "http://api.jquery.com/ready/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".remove()", 
             "def": "Remove the set of matched elements from the DOM.", 
             "url": "http://api.jquery.com/remove/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".removeAttr()", 
             "def": "Remove an attribute from each element in the set of matched elements.", 
             "url": "http://api.jquery.com/removeAttr/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".removeClass()", 
             "def": "Remove a single class, multiple classes, or all classes from each element in the set of matched elements.", 
             "url": "http://api.jquery.com/removeClass/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".removeData()", 
             "def": "Remove a previously-stored piece of data.", 
             "url": "http://api.jquery.com/removeData/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.removeData()", 
             "def": "Remove a previously-stored piece of data.", 
             "url": "http://api.jquery.com/jQuery.removeData/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".replaceAll()", 
             "def": "Replace each target element with the set of matched elements.", 
             "url": "http://api.jquery.com/replaceAll/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".replaceWith()", 
             "def": "Replace each element in the set of matched elements with the provided new content.", 
             "url": "http://api.jquery.com/replaceWith/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":reset Selector", 
             "def": "Selects all elements of type reset.", 
             "url": "http://api.jquery.com/reset-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".resize()", 
             "def": "Bind an event handler to the \"resize\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/resize/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".scroll()", 
             "def": "Bind an event handler to the \"scroll\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/scroll/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".scrollLeft()", 
             "def": "Get the current horizontal position of the scroll bar for the first element in the set of matched elements.", 
             "url": "http://api.jquery.com/scrollLeft/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".scrollTop()", 
             "def": "Get the current vertical position of the scroll bar for the first element in the set of matched elements.", 
             "url": "http://api.jquery.com/scrollTop/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".select()", 
             "def": "Bind an event handler to the \"select\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/select/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":selected Selector", 
             "def": "Selects all elements that are selected.", 
             "url": "http://api.jquery.com/selected-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".selector", 
             "def": "A selector representing selector originally passed to jQuery().", 
             "url": "http://api.jquery.com/selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".serialize()", 
             "def": "Encode a set of form elements as a string for submission.", 
             "url": "http://api.jquery.com/serialize/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".serializeArray()", 
             "def": "Encode a set of form elements as an array of names and values.", 
             "url": "http://api.jquery.com/serializeArray/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".show()", 
             "def": "Display the matched elements.", 
             "url": "http://api.jquery.com/show/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".siblings()", 
             "def": "Get the siblings of each element in the set of matched elements, optionally filtered by a selector.", 
             "url": "http://api.jquery.com/siblings/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".size()", 
             "def": "Return the number of elements in the jQuery object.", 
             "url": "http://api.jquery.com/size/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".slice()", 
             "def": "Reduce the set of matched elements to a subset specified by a range of indices.", 
             "url": "http://api.jquery.com/slice/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".slideDown()", 
             "def": "Display the matched elements with a sliding motion.", 
             "url": "http://api.jquery.com/slideDown/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".slideToggle()", 
             "def": "Display or hide the matched elements with a sliding motion.", 
             "url": "http://api.jquery.com/slideToggle/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".slideUp()", 
             "def": "Hide the matched elements with a sliding motion.", 
             "url": "http://api.jquery.com/slideUp/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".stop()", 
             "def": "Stop the currently-running animation on the matched elements.", 
             "url": "http://api.jquery.com/stop/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.sub()", 
             "def": "Creates a new copy of jQuery whose properties and methods can be modified without affecting the original jQuery object.", 
             "url": "http://api.jquery.com/jQuery.sub/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".submit()", 
             "def": "Bind an event handler to the \"submit\" JavaScript event, or trigger that event on an element.", 
             "url": "http://api.jquery.com/submit/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":submit Selector", 
             "def": "Selects all elements of type submit.", 
             "url": "http://api.jquery.com/submit-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.support", 
             "def": "A collection of properties that represent the presence of different browser features or bugs.", 
             "url": "http://api.jquery.com/jQuery.support/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".text()", 
             "def": "Get the combined text contents of each element in the set of matched elements, including their descendants.", 
             "url": "http://api.jquery.com/text/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":text Selector", 
             "def": "Selects all elements of type text.", 
             "url": "http://api.jquery.com/text-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".toArray()", 
             "def": "Retrieve all the DOM elements contained in the jQuery set, as an array.", 
             "url": "http://api.jquery.com/toArray/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".toggle()", 
             "def": "Display or hide the matched elements.", 
             "url": "http://api.jquery.com/toggle/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".toggle()", 
             "def": "Bind two or more handlers to the matched elements, to be executed on alternate clicks.", 
             "url": "http://api.jquery.com/toggle-event/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".toggleClass()", 
             "def": "Add or remove one or more classes from each element in the set of matched elements, depending on either the class&#39;s presence or the value of the switch argument.", 
             "url": "http://api.jquery.com/toggleClass/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".trigger()", 
             "def": "Execute all handlers and behaviors attached to the matched elements for the given event type.", 
             "url": "http://api.jquery.com/trigger/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".triggerHandler()", 
             "def": "Execute all handlers attached to an element for an event.", 
             "url": "http://api.jquery.com/triggerHandler/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.trim()", 
             "def": "Remove the whitespace from the beginning and end of a string.", 
             "url": "http://api.jquery.com/jQuery.trim/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.type()", 
             "def": "Determine the internal JavaScript [[Class]] of an object.", 
             "url": "http://api.jquery.com/jQuery.type/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".unbind()", 
             "def": "Remove a previously-attached event handler from the elements.", 
             "url": "http://api.jquery.com/unbind/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".undelegate()", 
             "def": "Remove a handler from the event for all elements which match the current selector, now or in the future, based upon a specific set of root elements.", 
             "url": "http://api.jquery.com/undelegate/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.unique()", 
             "def": "Sorts an array of DOM elements, in place, with the duplicates removed. Note that this only works on arrays of DOM elements, not strings or numbers.", 
             "url": "http://api.jquery.com/jQuery.unique/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".unload()", 
             "def": "Bind an event handler to the \"unload\" JavaScript event.", 
             "url": "http://api.jquery.com/unload/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".unwrap()", 
             "def": "Remove the parents of the set of matched elements from the DOM, leaving the matched elements in their place.", 
             "url": "http://api.jquery.com/unwrap/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".val()", 
             "def": "Get the current value of the first element in the set of matched elements.", 
             "url": "http://api.jquery.com/val/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ":visible Selector", 
             "def": "Selects all elements that are visible.", 
             "url": "http://api.jquery.com/visible-selector/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.when()", 
             "def": "Provides a way to execute callback functions based on one or more objects, usually Deferred objects that represent asynchronous events.", 
             "url": "http://api.jquery.com/jQuery.when/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".width()", 
             "def": "Get the current computed width for the first element in the set of matched elements.", 
             "url": "http://api.jquery.com/width/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".wrap()", 
             "def": "Wrap an HTML structure around each element in the set of matched elements.", 
             "url": "http://api.jquery.com/wrap/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".wrapAll()", 
             "def": "Wrap an HTML structure around all elements in the set of matched elements.", 
             "url": "http://api.jquery.com/wrapAll/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".wrapInner()", 
             "def": "Wrap an HTML structure around the content of each element in the set of matched elements.", 
             "url": "http://api.jquery.com/wrapInner/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.tmpl()", 
             "def": "Render the specified HTML content as a template, using the specified data.", 
             "url": "http://api.jquery.com/jquery.tmpl/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.tmplItem()", 
             "def": "Return the tmplItem data structure for the rendered template that the specified element is part of.", 
             "url": "http://api.jquery.com/jquery.tmplitem/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".link()", 
             "def": "Link changes to the matched elements to an object.", 
             "url": "http://api.jquery.com/link/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".template()", 
             "def": "Compile the contents of the matched element as a reusable compiled template.", 
             "url": "http://api.jquery.com/template/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.template()", 
             "def": "Create a reusable named template (compiled from markup).", 
             "url": "http://api.jquery.com/jQuery.template/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "{{each}} Template Tag", 
             "def": "Used to iterate over a data array, and render the content between the opening and closing template tags once for each data item.", 
             "url": "http://api.jquery.com/template-tag-each/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "{{else}} Template Tag", 
             "def": "Used in association with the {{if}}...{{/if}} tag to provide alternative content based on the values of one or more expressions. The {{else}} tag can be used without a parameter, as in: {{if a}}...{{else}}...{{/if}}, or with a parameter, as in: {{if a}}...{{else b}}...{{/if}}.", 
             "url": "http://api.jquery.com/template-tag-else/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "${} Template Tag", 
             "def": "Used for insertion of data values in the rendered template. Evaluates the specified field (property) on the current data item, or the specified JavaScript function or expression.", 
             "url": "http://api.jquery.com/template-tag-equal/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "{{html}} Template Tag", 
             "def": "Used for insertion of HTML markup strings in the rendered template. Evaluates the specified field on the current data item, or the specified JavaScript function or expression.", 
             "url": "http://api.jquery.com/template-tag-html/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "{{if}} Template Tag", 
             "def": "Used for conditional insertion of content. Renders the content between the opening and closing template tags only if the specified data item field, JavaScript function or expression does not evaluate to false (or to zero, null or undefined).", 
             "url": "http://api.jquery.com/template-tag-if/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "{{tmpl}} Template Tag", 
             "def": "Used for composition of templates. Renders one or more nested template items within the rendered output of the parent template.", 
             "url": "http://api.jquery.com/template-tag-tmpl/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "{{wrap}} Template Tag", 
             "def": "Used for composition of templates which incorporate wrapped HTML content. Rendered template items can combine wrapped HTML content with template markup.", 
             "url": "http://api.jquery.com/template-tag-wrap/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".tmpl()", 
             "def": "Take the first element in the matched set and render its content as a template, using the specified data.", 
             "url": "http://api.jquery.com/tmpl/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".tmplItem()", 
             "def": "Return the tmplItem data structure for the rendered template that the matched element is part of.", 
             "url": "http://api.jquery.com/tmplitem/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".unlink()", 
             "def": "Remove a previously created link.", 
             "url": "http://api.jquery.com/unlink/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.tmpl()", 
             "def": "Render the specified HTML content as a template, using the specified data.", 
             "url": "http://api.jquery.com/jquery.tmpl/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.tmplItem()", 
             "def": "Return the tmplItem data structure for the rendered template that the specified element is part of.", 
             "url": "http://api.jquery.com/jquery.tmplitem/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".link()", 
             "def": "Link changes to the matched elements to an object.", 
             "url": "http://api.jquery.com/link/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".template()", 
             "def": "Compile the contents of the matched element as a reusable compiled template.", 
             "url": "http://api.jquery.com/template/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "jQuery.template()", 
             "def": "Create a reusable named template (compiled from markup).", 
             "url": "http://api.jquery.com/jQuery.template/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "{{each}} Template Tag", 
             "def": "Used to iterate over a data array, and render the content between the opening and closing template tags once for each data item.", 
             "url": "http://api.jquery.com/template-tag-each/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "{{else}} Template Tag", 
             "def": "Used in association with the {{if}}...{{/if}} tag to provide alternative content based on the values of one or more expressions. The {{else}} tag can be used without a parameter, as in: {{if a}}...{{else}}...{{/if}}, or with a parameter, as in: {{if a}}...{{else b}}...{{/if}}.", 
             "url": "http://api.jquery.com/template-tag-else/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "${} Template Tag", 
             "def": "Used for insertion of data values in the rendered template. Evaluates the specified field (property) on the current data item, or the specified JavaScript function or expression.", 
             "url": "http://api.jquery.com/template-tag-equal/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "{{html}} Template Tag", 
             "def": "Used for insertion of HTML markup strings in the rendered template. Evaluates the specified field on the current data item, or the specified JavaScript function or expression.", 
             "url": "http://api.jquery.com/template-tag-html/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "{{if}} Template Tag", 
             "def": "Used for conditional insertion of content. Renders the content between the opening and closing template tags only if the specified data item field, JavaScript function or expression does not evaluate to false (or to zero, null or undefined).", 
             "url": "http://api.jquery.com/template-tag-if/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "{{tmpl}} Template Tag", 
             "def": "Used for composition of templates. Renders one or more nested template items within the rendered output of the parent template.", 
             "url": "http://api.jquery.com/template-tag-tmpl/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": "{{wrap}} Template Tag", 
             "def": "Used for composition of templates which incorporate wrapped HTML content. Rendered template items can combine wrapped HTML content with template markup.", 
             "url": "http://api.jquery.com/template-tag-wrap/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".tmpl()", 
             "def": "Take the first element in the matched set and render its content as a template, using the specified data.", 
             "url": "http://api.jquery.com/tmpl/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".tmplItem()", 
             "def": "Return the tmplItem data structure for the rendered template that the matched element is part of.", 
             "url": "http://api.jquery.com/tmplitem/" ,
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }, 
         { 
             "term": ".unlink()", 
             "def": "Remove a previously created link.", 
             "url": "http://api.jquery.com/unlink/",
-            "active": 1
+            "active": true,
+            "added_by" : "admin"
         }]
     }
 }

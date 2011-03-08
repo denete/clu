@@ -8,19 +8,23 @@
             "def" : "Remove the feathers from the object.",
             "url" : "http://blah.blah.com/pluck/",
             "active" : 1,
-            "term" : "pluck"
+            "term" : "pluck",
+            "added_by" : "admin",
+            "added_by" : "admin"
          },
          {
             "def" : "Add CATS to the world.",
             "url" : "http://blah.blah.com/cats/",
             "active" : 0,
-            "term" : "cat"
+            "term" : "cat",
+            "added_by" : "admin"
          },
          {
             "def" : "Add new CATS to the planet.",
             "active" : 1,
             "url" : "http://none.com/",
-            "term" : "cat"
+            "term" : "cat",
+            "added_by" : "admin"
          }
       ],
       "library" : "libGoose"

@@ -183,7 +183,8 @@ sub get_response {
                         term => $term,
                         def => $def,
                         url => $url,
-                        active => 1
+                        active => 1,
+                        added_by => $nick
                     });
                     my $jsonOut = to_json($data{ $libname }, {utf8 => 1, pretty => 1});
                     &write_data($config::dataset{ $libname }, $jsonOut);
@@ -248,17 +249,14 @@ sub get_entries {
             } else {
                 for my $entry (@{$data{ $lib }->{data}->{entries}}){
                     if ($entry->{active} && $entry->{term} =~ m/$keyword/i){
-                        $result .= "$entry->{term} -- $entry->{def}";
-                        $result .=" $entry->{url}" if $entry->{url} ne '';
+                        $result .= "$entry->{term} -- $entry->{def} $entry->{url}\n";
                     }
                 }
             }
             $result = "I've got nothing for $lib $keyword." if (!$result);
         } elsif ((defined $lib) && ($lib ne '')) {
-                #my $randomNode = @{$data{ $lib }->{data}->{entries}}[rand @{$data{ $lib }->{data}->{entries}}];
                 my $randomNode = &get_random($lib);
-                $result .= "$randomNode->{term} -- $randomNode->{def}";
-                $result .= " $randomNode->{url}" if $randomNode->{url} ne '';
+                $result .= "$randomNode->{term} -- $randomNode->{def} $randomNode->{url}\n";
                 $result = "I've got nothing for $lib." if (!$result); # we should never see this
         }
     } else {
