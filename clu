@@ -38,6 +38,7 @@ local $Data::Dumper::Terse = 1;
 $mynick = $ARGV[1] ? $ARGV[1] : $config::nick;
 
 while ( my ($key, $value) = each(%config::dataset) ) {
+    $cmds{ $key } = "Takes an optional keyword to search against or can be used alone to return a random entry.";
     &init_data($key, $value);
 }
 
@@ -66,13 +67,15 @@ sub _start {
     my $irc = $heap->{irc};
     
     $irc->plugin_add('BotCommand', POE::Component::IRC::Plugin::BotCommand->new(
-             Commands => {
-                 _shoot   => 'Takes one argument: a nickname to shoot',
-                 _add => 'Usage: dataset <term>The_term <def>The_definition <url>http://the_url',
-                 _rm => 'Takes two arguments: the dataset and the entry term',
-                 _showall => 'Takes one argument: the dataset',
+             Commands => {(
+                  shoot   => 'Takes one argument: a nickname to shoot',
+                  _add => 'Usage: dataset <term>The_term <def>The_definition <url>http://the_url',
+                  _rm => 'Takes two arguments: the dataset and the entry term',
+                  _showall => 'Takes one argument: the dataset'), %cmds
              },
-             Ignore_unknown => 1
+             Ignore_unknown => 1,
+             In_private => 1,
+             Prefix => ''
          ));
     
     $irc->plugin_add( 'BotAddressed', POE::Component::IRC::Plugin::BotAddressed->new() );
@@ -121,8 +124,8 @@ sub get_response {
     my $msg = "$nick: ";
     # filtering the command requests here, trying to consolidate msg and bot_addressed
     if ($what =~ m/^help/i){
-        #$msg .= &get_help;
-        #$irc->yield( privmsg => $route => "$msg" );
+        # let botcommand deal with help requests
+        return;
     } elsif ($what =~ m/^_rm/){
         $what =~ s/^_rm\s+//;
         if ($what =~ m/^(\w*)\s+(.*)/){
