@@ -200,7 +200,7 @@ sub get_response {
             return;
         }
     } elsif ($what =~ m/^_showall\s?(\w+)?/){
-        $msg .= &get_entries('_showall', $1);
+        $msg .= &get_entries($1, '_showall');
         my @result = split(/\n/, fill('', '', $msg));
         for my $line (@result) {
             $irc->yield( privmsg => $route => "$line" );
@@ -236,10 +236,14 @@ sub get_entries {
             $keyword = $lib;
             $lib = $config::default_set;
         }
+    } else {
+        $lib = $config::default_set;
     }
+    
     if (exists $data{ $lib }){
         if ((defined $keyword) && ($keyword ne '') && (defined $lib) && ($lib ne '')){
             if ($keyword eq '_showall'){
+                $result .= "$lib -- ";
                 for my $entry (@{$data{ $lib }->{data}->{entries}}){
                     if($entry->{active}){
                         $result .= " $entry->{term},";
@@ -253,14 +257,14 @@ sub get_entries {
                     }
                 }
             }
-            $result = "I've got nothing for $lib $keyword." if (!$result);
-        } elsif ((defined $lib) && ($lib ne '')) {
+            $result .= "I've got nothing for $lib $keyword." if (!$result);
+        } else {
                 my $randomNode = &get_random($lib);
                 $result .= "$randomNode->{term} -- $randomNode->{def} $randomNode->{url}\n";
-                $result = "I've got nothing for $lib." if (!$result); # we should never see this
+                $result .= "I've got nothing for $lib." if (!$result); # we should never see this
         }
     } else {
-        $result = "I've got nothing for $lib.";
+        $result .= "I've got nothing for $lib.";
     }
     return $result;
 }
