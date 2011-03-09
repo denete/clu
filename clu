@@ -15,6 +15,7 @@
 #$config::ssl = 0;
 #@config::ch = ('channel_name1', 'channel_name2');
 #$config::msg_length = 400;
+#$config::max_results = 5;
 #1;
 
 # ---
@@ -71,6 +72,7 @@ sub _start {
                   shoot   => 'Takes one argument: a nickname to shoot',
                   _add => 'Usage: dataset <term>The_term <def>The_definition <url>http://the_url',
                   _rm => 'Takes two arguments: the dataset and the entry term',
+                  _all => 'Takes two arguments: the dataset and a keyword (using _all removes the limitation on the number of entries returned)',
                   _showall => 'Takes one argument: the dataset'), %cmds
              },
              Ignore_unknown => 1,
@@ -206,13 +208,20 @@ sub get_response {
             $irc->yield( privmsg => $route => "$line" );
             #sleep 1;
         }
-    } elsif ($what =~ m/^(\w+)\s?(\w+)?/){
-        $msg .= &get_entries($1, $2);
+    } elsif ($what =~ m/^(_all)?\s?(\w+)\s?(\w+)?/){
+        my ($all, $arg1, $arg2) = ($1, $2, $3);
+        $msg = &get_entries($arg1, $arg2);
         if($msg =~ m/\n/){
             my @msgLines = split('\n', $msg);
             my $numEntries = @msgLines;
-            my $count = $numEntries > $config::max_results ? $config::max_results : $numEntries;
-            for(my $i = 0; $i < $count; $i++){
+            my $count = $numEntries;
+            if ($all ne '_all' && $numEntries > $config::max_results){
+                unshift(@msgLines, "$nick: $numEntries entries returned. Showing the first $config::max_results entries. To show all entries, use \"$mynick _all $arg1 $arg2\".");
+                $count = $config::max_results;
+            } else {
+                unshift(@msgLines, "$nick: $numEntries entries returned.");
+            }
+            for(my $i = 0; $i < $count+1; $i++){
                 $irc->yield( privmsg => $route => "$msgLines[$i]" );
             }
         } else {
