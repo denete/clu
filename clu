@@ -216,7 +216,7 @@ sub get_response {
             my $numEntries = @msgLines;
             my $count = $numEntries;
             if ($all ne '_all' && $numEntries > $config::max_results){
-                unshift(@msgLines, "$nick: $numEntries entries returned. Showing the first $config::max_results entries. To show all entries, use \"$mynick _all $arg1 $arg2\".");
+                unshift(@msgLines, "$nick: $numEntries entries returned. Showing the first $config::max_results entries. To show all entries, use \"$mynick _all $arg1 $arg2\". PLEASE consider sending this request to $mynick in a private message to prevent spamming the channel.");
                 $count = $config::max_results;
             } else {
                 unshift(@msgLines, "$nick: $numEntries entries returned.");
